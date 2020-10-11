@@ -1,0 +1,65 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebForm.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <asp:ContentPlaceHolder ID="Header" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <form runat="server" style="height: 100vh">
+
+        <div style="height: 50px; background: #000000; line-height: 50px; color: #FFF" class="container">
+            <a href="Index.aspx" style="color: #FFF; background: #40ab42; padding: 10px; border-radius: 3px; text-decoration: none;">NHÀ TRỌ
+            </a>
+            <div style="display: inline; float: right">
+                <asp:HyperLink ID="hlSignIn" runat="server" NavigateUrl="~/Views/Public/SignIn.aspx" Text="Đăng nhập" ForeColor="White">
+                </asp:HyperLink>
+                <asp:HyperLink ID="hlProfile" runat="server" NavigateUrl="~/Views/Private/Profile.aspx" Visible="false" ForeColor="White">
+                </asp:HyperLink>
+                <asp:Button ID="btSignOut" runat="server" Text="Đăng xuất" Visible="false" OnClick="btSignOut_Click" />
+            </div>
+        </div>
+        <div class="body-content container">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer style="padding: 20px;" class="container">
+            <p>&copy; <%: DateTime.Now.Year %> - Tìm nhà trọ</p>
+        </footer>
+    </form>
+    <style>
+        html {
+            height: 100vh;
+        }
+
+        body {
+            margin: 0px;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+
+            body a {
+                text-decoration: none;
+            }
+
+        .container {
+            padding: 0px 100px;
+        }
+
+        .body-content {
+            min-height: calc( 100% - 144px);
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #e2dede;
+        }
+    </style>
+</body>
+</html>
