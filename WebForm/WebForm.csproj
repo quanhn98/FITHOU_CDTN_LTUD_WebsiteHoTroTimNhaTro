@@ -161,11 +161,15 @@
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Views\Public\Address.aspx" />
+    <Content Include="Views\Public\DetailPost.aspx" />
+    <Content Include="Views\Public\EditPost.aspx" />
+    <Content Include="Views\Public\Error.aspx" />
     <Content Include="Views\Public\Index.aspx" />
-    <Content Include="Views\Public\Post.aspx" />
+    <Content Include="Views\Public\NewPost.aspx" />
     <Content Include="Views\Public\Profile.aspx" />
     <Content Include="Views\Public\SignIn.aspx" />
     <Content Include="Views\Public\SignUp.aspx" />
+    <Content Include="Views\Public\TestAjax.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -177,6 +181,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EnumFileType.cs" />
+    <Compile Include="Models\MediaInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -219,16 +225,37 @@
     <Compile Include="Views\Public\Address.aspx.designer.cs">
       <DependentUpon>Address.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Public\DetailPost.aspx.cs">
+      <DependentUpon>DetailPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Public\DetailPost.aspx.designer.cs">
+      <DependentUpon>DetailPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Public\EditPost.aspx.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Public\EditPost.aspx.designer.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Public\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Public\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Public\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Public\Post.aspx.cs">
-      <DependentUpon>Post.aspx</DependentUpon>
+    <Compile Include="Views\Public\NewPost.aspx.cs">
+      <DependentUpon>NewPost.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Public\Post.aspx.designer.cs">
-      <DependentUpon>Post.aspx</DependentUpon>
+    <Compile Include="Views\Public\NewPost.aspx.designer.cs">
+      <DependentUpon>NewPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Public\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
@@ -251,10 +278,18 @@
     <Compile Include="Views\Public\SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Public\TestAjax.aspx.cs">
+      <DependentUpon>TestAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Public\TestAjax.aspx.designer.cs">
+      <DependentUpon>TestAjax.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="ImageUpload\" />
+    <Folder Include="VideoUpload\" />
     <Folder Include="Views\Private\" />
   </ItemGroup>
   <ItemGroup>

@@ -12,15 +12,13 @@ namespace WebForm.Views.Public
     public partial class SignUp : System.Web.UI.Page
     {
         UserManager UserManager = new UserManager();
-        string userNameConfig = ConfigurationManager.AppSettings["userNameConfig"];
-        string userNameSession = ConfigurationManager.AppSettings["userNameSession"];
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                var userNameCookieValue = Request.Cookies[userNameConfig];
-                var userNameSessionValue = (string)Session[userNameSession];
+                var userNameCookieValue = Request.Cookies["UserName"];
+                var userNameSessionValue = (string)Session["UserName"];
                 //var userIdSessionValue = (int)Session[userIdSession];
                 var cookieCheck = (userNameCookieValue != null && string.IsNullOrEmpty(userNameCookieValue.Value));
                 var sessionCheck = !string.IsNullOrEmpty(userNameSessionValue);
@@ -29,7 +27,7 @@ namespace WebForm.Views.Public
                     Session.Abandon();
                     if (userNameCookieValue != null)
                     {
-                        Request.Cookies.Remove(userNameConfig);
+                        Request.Cookies.Remove("UserName");
                     }
                 }
             }
@@ -42,12 +40,14 @@ namespace WebForm.Views.Public
                 var user = new User()
                 {
                     UserName = tbUserName.Text,
-                    Password = tbPassword.Text
+                    Password = tbPassword.Text,
+                    PhoneNumber = tbPhoneNumber.Text
                 };
                 var addRs = UserManager.SignUp(user);
                 if (addRs != null)
                 {
-                    Session[userNameSession] = user.UserName;
+                    Session["UserName"] = user.UserName;
+                    Session["UserId"] = user.Id;
                     Response.Redirect("Index");
                 }
                 else

@@ -5,10 +5,15 @@ namespace WebForm.SqlServer
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using WebForm.Models;
 
     [Table("Post")]
-    public partial class Post
+    public class Post
     {
+        public Post()
+        {
+
+        }
         public int Id { get; set; }
 
         [Required]
@@ -47,6 +52,8 @@ namespace WebForm.SqlServer
         public int? UserId { get; set; }
 
         public double? Price { get; set; }
+
+        public bool Closed { get; set; }
 
         public virtual City City { get; set; }
 

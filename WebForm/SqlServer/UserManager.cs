@@ -14,6 +14,11 @@ namespace WebForm.SqlServer
         {
             return appContext.User.ToList();
         }
+        public User GetUserByName(string userName)
+        {
+            var user = appContext.User.FirstOrDefault(a=>a.UserName==userName);
+            return user;
+        }
         public AppResultModel<User> SignIn(User user)
         {
             var model = appContext.User.FirstOrDefault(b => b.UserName == user.UserName && b.Password == user.Password);

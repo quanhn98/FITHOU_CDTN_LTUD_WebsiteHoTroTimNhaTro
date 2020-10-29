@@ -17,9 +17,11 @@
             <a href="Index.aspx" style="color: #FFF; background: #40ab42; padding: 10px; border-radius: 3px; text-decoration: none;">NHÀ TRỌ
             </a>
             <div style="display: inline; float: right">
+                <asp:HyperLink ID="hlNewPost" runat="server" NavigateUrl="~/Views/Public/NewPost.aspx" Text="Đăng tin" ForeColor="Yellow" Visible="false">
+                </asp:HyperLink>
                 <asp:HyperLink ID="hlSignIn" runat="server" NavigateUrl="~/Views/Public/SignIn.aspx" Text="Đăng nhập" ForeColor="White">
                 </asp:HyperLink>
-                <asp:HyperLink ID="hlProfile" runat="server" NavigateUrl="~/Views/Private/Profile.aspx" Visible="false" ForeColor="White">
+                <asp:HyperLink ID="hlProfile" runat="server" NavigateUrl="~/Views/Public/Profile.aspx" Visible="false" ForeColor="White">
                 </asp:HyperLink>
                 <asp:Button ID="btSignOut" runat="server" Text="Đăng xuất" Visible="false" OnClick="btSignOut_Click" />
             </div>

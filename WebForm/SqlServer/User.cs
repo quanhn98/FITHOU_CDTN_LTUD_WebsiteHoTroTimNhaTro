@@ -28,6 +28,7 @@ namespace WebForm.SqlServer
         public DateTimeOffset? RegistrationDate { get; set; }
 
         public bool? IsAdmin { get; set; }
+        public string PhoneNumber { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Post { get; set; }

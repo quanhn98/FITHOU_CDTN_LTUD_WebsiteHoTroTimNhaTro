@@ -16,6 +16,7 @@
                         <td>
                             <asp:TextBox ID="tbUserName" runat="server" EnableViewState="true"></asp:TextBox>
                         </td>
+                        <%--ValidationExpression="[\s\S]{0,10}"--%>
                     </tr>
                     <tr>
                         <td></td>

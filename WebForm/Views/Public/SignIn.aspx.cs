@@ -13,15 +13,13 @@ namespace WebForm.Views
     public partial class Login : System.Web.UI.Page
     {
         UserManager UserManager = new UserManager();
-        string userNameConfig = ConfigurationManager.AppSettings["userNameConfig"];
-        string userNameSession = ConfigurationManager.AppSettings["userNameSession"];
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                var userNameCookieValue = Request.Cookies[userNameConfig];
-                var userNameSessionValue = (string)Session[userNameSession];
+                var userNameCookieValue = Request.Cookies["UserName"];
+                var userNameSessionValue = (string)Session["UserName"];
                 //var userIdSessionValue = (int)Session[userIdSession];
                 var cookieCheck = (userNameCookieValue != null && string.IsNullOrEmpty(userNameCookieValue.Value));
                 var sessionCheck = !string.IsNullOrEmpty(userNameSessionValue);
@@ -30,7 +28,7 @@ namespace WebForm.Views
                     Session.Abandon();
                     if (userNameCookieValue != null)
                     {
-                        Request.Cookies.Remove(userNameConfig);
+                        Request.Cookies.Remove("UserName");
                     }
                 }
             }
@@ -49,8 +47,9 @@ namespace WebForm.Views
                 var addRs = UserManager.SignIn(user);
                 if (addRs!=null)
                 {
-                    Session[userNameSession] = user.UserName;
-                    HttpCookie httpCookie = new HttpCookie(userNameConfig);
+                    Session["UserName"] = user.UserName;
+                    Session["UserId"] = user.Id;
+                    HttpCookie httpCookie = new HttpCookie("UserName");
                     httpCookie.Value = addRs.Data.UserName.ToString();
                     if (cbRememberMe.Checked)
                     {
