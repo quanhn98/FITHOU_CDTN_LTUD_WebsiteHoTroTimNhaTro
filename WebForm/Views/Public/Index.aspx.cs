@@ -12,8 +12,19 @@ namespace WebForm.Views
     {
         UserManager UserManager = new UserManager();
         ProvinceManager ProvinceManager = new ProvinceManager();
+        PostManager PostManager = new PostManager();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+
+            }
+        }
+
+        public void RenderPost()
+        {
+            var posts = PostManager.GetPosts();
+
         }
     }
 }

@@ -54,6 +54,9 @@ namespace WebForm.SqlServer
         public double? Price { get; set; }
 
         public bool Closed { get; set; }
+        public int CountView { get; set; }
+        public string CoordinatesX { get; set; }
+        public string CoordinatesY { get; set; }
 
         public virtual City City { get; set; }
 
