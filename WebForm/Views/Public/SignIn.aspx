@@ -55,7 +55,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            margin-top: -250px;
+            margin-top: -200px;
             margin-left: -250px;
             width: 500px;
             height: max-content;

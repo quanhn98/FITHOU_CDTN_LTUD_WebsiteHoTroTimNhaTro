@@ -145,6 +145,9 @@
         .post-Item {
             margin-bottom: 20px;
         }
+        .mediaItem{
+
+        }
     </style>
     <script>
         var btnMoreField = document.getElementById("btnMoreField");
@@ -152,9 +155,9 @@
         var upMedia = document.getElementById("upMedia");
         var previewContainer = document.getElementById("previewMedia");
         var mediaMetadata = [];
-        function MediaObj(name,path) {
+        function MediaObj(name, path) {
             this.Name = name,
-            this.Path = path
+                this.Path = path
         }
         btnMoreField.onclick = function () {
             moreFieldContainer.style.display = "initial";
@@ -174,28 +177,24 @@
             //$('#MainContent_dlProvinceId').innerHTML = ""; // clear options
         }
         upMedia.onchange = function (e) {
-            console.log(upMedia.files);
             if (upMedia.files.length == 0) {
-                previewContainer.empty();
+                previewContainer.innerHTML = "";
             }
             for (var i = 0; i < upMedia.files.length; i++) {
-                console.log(upMedia.files[i]);
-                //var item = upMedia.Files[i];
-                //var newMedia = new MediaObj(item.name,upMedia.Files[i]);
-                //if () {
+                var item = upMedia.files[i];
+                console.log(item);
 
-                //} else {
-                //}
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var newPreview = document.createElement("img");
+                    newPreview.className = "mediaItem";
+                    newPreview.style.cssText = "";
+                    newPreview.src = e.target.result;
+                    previewContainer.appendChild(newPreview);
+                }
+                reader.readAsDataURL(item);
             }
-            //if (input.files && input.files[0]) {
-            //    var reader = new FileReader();
-
-            //    reader.onload = function (e) {
-            //        $('#blah').attr('src', e.target.result);
-            //    }
-
-            //    reader.readAsDataURL(input.files[0]); // convert to base64 string
-            //}
         };
     </script>
 </asp:Content>
+

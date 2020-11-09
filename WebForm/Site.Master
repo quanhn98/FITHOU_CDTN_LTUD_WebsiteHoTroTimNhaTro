@@ -9,59 +9,112 @@
     <asp:ContentPlaceHolder ID="Header" runat="server">
     </asp:ContentPlaceHolder>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Content/app.css" />
+    <%--    <link rel="stylesheet" href="Content/header.css" />
+    <link rel="stylesheet" href="Content/body.css" />
+    <link rel="stylesheet" href="Content/footer.css" />--%>
 </head>
 <body>
-    <form runat="server" style="height: 100vh">
-
-        <div style="height: 50px; background: #000000; line-height: 50px; color: #FFF" class="container">
-            <a href="Index.aspx" style="color: #FFF; background: #40ab42; padding: 10px; border-radius: 3px; text-decoration: none;">NHÀ TRỌ
-            </a>
-            <div style="display: inline; float: right">
-                <asp:HyperLink ID="hlNewPost" runat="server" NavigateUrl="~/Views/Public/NewPost.aspx" Text="Đăng tin" ForeColor="Yellow" Visible="false">
-                </asp:HyperLink>
-                <asp:HyperLink ID="hlSignIn" runat="server" NavigateUrl="~/Views/Public/SignIn.aspx" Text="Đăng nhập" ForeColor="White">
-                </asp:HyperLink>
-                <asp:HyperLink ID="hlProfile" runat="server" NavigateUrl="~/Views/Public/Profile.aspx" Visible="false" ForeColor="White">
-                </asp:HyperLink>
-                <asp:Button ID="btSignOut" runat="server" Text="Đăng xuất" Visible="false" OnClick="btSignOut_Click" />
+    <form runat="server" style="min-height: 100vh">
+        <header class="header-Container">
+            <div class="appWrapper-Layout-container">
+                <div class="appWrapper-Layout-leftPanel">
+                    <a class="appWrapper-Header-logoAnchor"
+                        href="/Views/Public/Index.aspx">
+                        <img class="appWrapper-Header-logo"
+                            src="/Content/Images/logo2.png" alt="Tìm nhà trọ">Tìm nhà trọ</a>
+                </div>
+                <div class="appWrapper-Layout-rightPanel">
+                    <div class="hover appWrapper-Header-navItem hideIP5">
+                        <asp:HyperLink ID="hlProfile" runat="server" NavigateUrl="~/Views/Public/Profile.aspx" Visible="false" ForeColor="White">
+                        </asp:HyperLink>
+                    </div>
+                    <div class="hover appWrapper-Header-navItem hideIP5">
+                        <asp:HyperLink ID="hlNewPost" runat="server" NavigateUrl="~/Views/Public/NewPost.aspx" Text="Đăng tin" ForeColor="Yellow" Visible="false">
+                        </asp:HyperLink>
+                    </div>
+                    <div class="hover appWrapper-Header-navItem hideIP5">
+                        <asp:HyperLink ID="hlSignIn" runat="server" NavigateUrl="~/Views/Public/SignIn.aspx" Text="Đăng nhập" ForeColor="White">
+                        </asp:HyperLink>
+                    </div>
+                    <div class="hover appWrapper-Header-navItem hideIP5">
+                        <asp:Button ID="btSignOut" runat="server" Text="Đăng xuất" Visible="false" OnClick="btSignOut_Click" />
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="main-content">
+            <div class="container" style="">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
             </div>
         </div>
-        <div class="body-content container">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-        <footer style="padding: 20px;" class="container">
-            <p>&copy; <%: DateTime.Now.Year %> - Tìm nhà trọ</p>
+        <footer>
+            <div class="appWrapper-DesktopFooter container">
+                <div class="appWrapper-DesktopFooter-container container">
+                    <section class="appWrapper-DesktopFooter-container-top">
+                        <div class="appWrapper-DesktopFooter-item">
+                            <p class="appWrapper-DesktopFooter-heading">Tìm nhà trọ</p>
+                            <ul class="appWrapper-Footer-ul">
+                                <li class="appWrapper-DesktopFooter-li"><a class="appWrapper-Footer-a" href=""
+                                    target="_blank" rel="noopener noreferrer">
+                                    <img height="50" src="/Content/Images/logo2.png" />
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="appWrapper-DesktopFooter-item">
+                            <p class="appWrapper-DesktopFooter-heading">Tải ứng dụng</p>
+                            <div class="appWrapper-DesktopFooter-item-row">
+                                <div class="appWrapper-DesktopFooter-item appWrapper-DesktopFooter-item-in-row"></div>
+                                <div class="appWrapper-DesktopFooter-item appWrapper-DesktopFooter-item-in-row">
+                                    <ul class="appWrapper-Footer-ul">
+                                        <li class="appWrapper-DesktopFooter-li"><a class="appWrapper-Footer-a"
+                                            href="" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <img alt="App Store" height="32"
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWoAAACLCAMAAAB/aSNCAAAAkFBMVEUAAAD////m5ubl5eXk5OTx8fH09PTr6+syMjKioqKwsLCtra2enp729vbp6en7+/vc3Nx0dHS6urpra2uXl5fDw8OoqKhmZmaQkJANDQ0jIyPOzs7W1tZ9fX2vr69RUVEvLy9ERER5eXlYWFhCQkIXFxeJiYkhISFdXV07OzsqKirIyMhDQ0MbGxuSkpKEhIRyqhfDAAAScElEQVR4nO1dC3uqPAy2XERURFGYmzq8bG7qt/n//93XJi203CwOne6Y8zxnAUpJX9I0SVtsESDToGQhb0j8AHgfeIfxJufZDaYHvJ3j28C3gbeB9yp5B3gfhOC8xfgBCgG8IfHWPQpttO5R6gfUD6gfUN+E0A+orw61BcSllvgB8FzSHM8lzfFcauC5dDleSJflhaSMDIm3qvk7ELplMhJqIvGGxA8sxgt5U94G3ivhheyMF/JmeSFvhjeF7Iw3JN7K83cjdMvQ7YWWTi+s2yOlXmjq9EJT4u9NaH2otQzeD6TWMnh1ob4loR9QP6D+g1Df8ZB+Z0IX+dWmpCamoY4tCt+Ai2pJapLjJTUxT/nVNy90rRAmK3XT0YCl2yPrhDA3I/QjWrya0A+oH1D/XajvZhi/S98DefSruecn8wNZHXI8l7GKNyQ1MSR1UPgC1TAl1cjxhsTfm9B6IYy2x3RmNFDlMZ0dwtya0I9o8QYDc8U59ZuVOqsgl8ns/bLQ1VDzQrbDyK/k28Cj1F6Ob+d4H3g7x5Mc75zHX1vowaBODsRUh3RzYFiHoNd77QG9Jv8lfyRe//+yGvIPuAR/MaGDmV4OxJDeBOizwV773HWj1+6DtKgX9UPDScyIjCjyFSGM33MDdxTvOg/SoNXTdzdy506pH1IBte/23FXrQfq0n3Td0KkNtelHvclvy353tO5Sva4LtRNG/d8W/A5p0XNPQZ1NJ5iW2335bbnvkaIolBA1ZXRbA0bC9wAeXM5ZdPxtqe+S4q4LKAo/REK3LISJurvflvo+iXohg1rRot/v/rbMd0qT6FAPaqcf/bbMd0rHKHBqQW33H/7HeTQqh7o4B/KA+lyiUA9KciA+o8T3YLwzGDjWA+ozaUS9PQqib6AfAugiX7LkZvhTqONxM5LfHY24Y60dLf4M6l1g0/5yadr0XrXKvby+/nfWA9a9M3yDq0L9Bc9q6xQN55ZtG7MoPuc5a0KedcrtCDmvi/WIXf+ma0L9iRMcQ52yRNDsjAeN9KF+qlk15iQi4tSVSQPqTA7EPB/qNQdPq+/5ZEr/j6lw5+jPhaB+mZEFMNGPtLokBzJAP8QRPA1hzoQ6Fnr6qVPaJ5io3RIS1H7UxaAWBudMqAObguiA7+EPUj/EbziEefc40npdT0DdOhCyB+YznM0CMN2rIOiwE4HLjtxgxE5FrafDLNxgowTUu95sFo6wov2WVtAVUxoxPZjuM1BvAvoIrGIZdFtxMDvItvy7S0jYZW+eGZDFbN794Feewvms/3WiSRjCmJePFiOh1N9axROon7gmHfBuOEvAugToyxCypiCR9hauQ1kB9VY293M8QCSneEGFuoclIMezI/4ofSDSjAPDGmN1pRGe8nQY8vbVTaqIFhuF+lkgrTmeJFDv0Lh3AdEAsZyREIqwg09o+4bW7K5GHjaeQ/0EsC0IlG6tmXbP8fn0ptmqNSEK1PRwCypxxMeSYPNEsXhPCrzR27Yr9q5oIXsdR/y1bIm9ZFWfGMGvBfVUQK3pvSVQf3mEOsm0q8NjHWJh25jtD1lLIwByha1eY/0c6iEx2T0UkWQug5Z7ayWIRwrUPgI3BDtMoZ7TPx0EnhOVAq1RpFRjQy0fwtKV0bVyIEOO9FazfAJ1x2daTTFk5plp3goAeGu55IkYrdYAnIIlgvaGfxDqLw7TShitTT84wLv48LB2ZVikN0EifiweAc4Gf8VclhRqn/35hrcSEy+mtPP5xTI6lQPBlTqDlD8vB/LM1/poT+AkUG/ATLwSG6zvEzowJrUmQ6oMZE8VjY1NS1QzHpMg1LHoQh7psYqMpFutuBukQD3lWrmBkx1u9j3ipkJJUIM6b0n7HZ6mNQxhDoT6HriIyk/5RnMgO3yT+vM3CdSvoGyRCnWfBO+0g7tkOkYLWQT1RkDtM6jppdm+9eGzc29FUG9TqDenoQZnb0raz+xp/veEUb+6eXIIo7Xt6Dyo/6N3z9c1bhBQd9CBWPPe7RKf4fFJhmNqi1Yk7GNHKYL6matZDCNqHxSxA/C/cAMSy1Cj4QDIV7Wgjon/0dKgKwXm7wsxHD7vT/hESD7CtGkTsmzBgBTg6TlcJl7A0LTtGQ55RVBTEwPd/ABexAEG1DFq+px47Irq7HnkwP44kDnYFUFNH49jTWpA2Ctt60VZl4N61Z9Ruz/7XkrnPiPL9n3bCk/abJ+Ex+OEDaYb3jgSvcRDrtytEFMpgcioFEK9YS7dyyv6xlvmjI94ffSKcxyFxJOhpsa6t1zN0LgUQ22T9nHbSqBGrWZVH9bxuH+iURo5EOlLD5TXhHphJ4PF8MhDN9cnKb1WB1e8lBeICPsVjzk0azQOI+EgdLD3v2EPX/AQhmddECzwgXromPHgZjxUMnt9OOmDndtxW6GmbI6sAAgDveKb+OB1T/A5h2pIEqgZoCIHYrJ/LUcaKVNeKwfyZhGZvHAx3s6JSv6iqobFpNuNFnIst4rCcCuM4vNiwezQ++KI5ujruGCXPhZHpvW7BVewziQMXTFYfR+CcWu0wMO4e+jFrdFRGclWbhhO0QenNb2BHAslEHgKQhaofi5A+Pi4Rk3obIMgGp+OFu0iRLM5ELNOCHMkWlQ/j3TXxEIYU/E9zB9HixM9pP81rC8QmI+KUC0mvdTTH6HmoX7RR3rWuU4jb4MqoFY+k5X4ISehzg5/5fSPrUhjORAKovSZrKIciKOfAxlrI/1vWeo0B5L37EQIo3xB7XQIM9NFWms29y+R7Fenfgj1SczzokV9S/1P2WlGTQfm37pI/2vmo3moQ12ol9dp3w3R6RyIWSsH4hegWkSaljpyKUXnrfYqoa9pOPB90p71tFZJNEfFORBGBTkQ72QO5F1XqfXSg59YuNdMW4G6khBenQz6j6kiB1L89dZqv3qlC7VeIwMsfMaqrTL52ooUV10UCzkQ9fOzP4kWn3Shrp7xFCSW6TS193epCuFJl94vbk4aDsy1AxgtqNnqDo9Z/6a23+C8/WHc+dg/9Ydpgnk/ncMkzUXppqFm0wEhC/QHDTUWHp0kwWORioZg4OIhlW4ORNNWaxsQrV3qbKfwEeZGmtkqCYvRCrKJV4M6kwNJPhXuMRK+B/B0ALWrcyBvulCfmBwCWrGCb7CC1T1dWoNgI2xBlHotqEPCYOS+h5fyRX41HT9P+NW6UHsaq3JhuSJWWWxIn9/iuHi/+1ccr/LzT6wmv2BaChYUznOnd7SS4hnQr3gjrUfYjdcbjWUAhTkQ9KvxoGa0qBvC6Bhr5pgFPIElRTF9w7IYLgsc5AapxgeWZTIffIryWtkpbHBososGxwMLKvKGbJVX4oeseTLYkfZ5d2no0W21OkwiUfcTXyJrnowUmg7MtRN7p0c6sBxbPlMpPZQpuyfnxR0BBmvKvLV3kivzd6VGuCWrvQtFLD5mxo50LnmXrP4hX5O/Tk9lxSihpqF2daE+bX6hKtox9z5RLCnLaHnPA7kubn9ZJGg+yx3LVrDGSc9QtV1FUK+Vc8lqXhZRzTkuCLWplFtWtqfpHIi2C3J6o4ZFuAqCMqbn2RoOn3VbL+jyBa48nGTL5W1W2g4C3hZVh/kH3JTlsAu/DWtWfLvdbvsANeYDvGj81MflLCEWZf1pxtfkw+oE6MOzzXK5ARmrR1bFVqs5EJsR+h5ewvuDaqiTJes/xrrDigAokJidptjw2+HaHu1IN4GCAQ3xNl95qtjrDb/Vi9TOrr6UD/zuCR5gbiBZVk1setGaLI7M5MOi8YlUrnJpC8uBMEJEHYk/y6+uM7V4Ygkw+NNgGb4Yl2oMD5PE8IYPTG+BhbhAYG/V/EkaYoUS2BlnD96YoTQIa+HWMYkJ2EHitTrkhFoX5ECEX33ejPm2BtRsl0QpMWPMfbxhgnoKV6LlL+lbQ1ucdJaN8kqQdum6qzTaz0ANVzfiCHoXJqbQdiSzz9DbvpSjZQUyjS9O+KgDdcW0F2SG+NAJECYGFqFOS0LXhe4OWi25NkMVUaRjMmxaYnxUoYYxUXLkwSDDpJGrPnlI5B2s8GKrEpbNrwPRdvcyLcoQKAmPE0CxEls6Vo74SAz9fZKBdpq8BLXNQkSHY61CDa9OShyAswnrqUGrE4vxxQbZXusd6blT9F6VxzabA2kl6Xw9Kk+FgCOBq/EnU8gyiysAdZiWhOkI8OoA6nT8xPRS0WbOHXeHeS0q1NBMST3Bj4a9L66CJp73EmKHVUtbMAdSaKsl38NO+dN7YVRfs5L897JK9vnCYhAFqOVZYLjKLFE/A/UqASlHb15yVxZqGE3fMqKApK6iHRuSp6rJaers+UWI2vZ5OZCW9jpURuX9bZovLCxBOdRZrd6VQ81352BbCqBeZur3ma0BA5I4dEUhRLVWl/rVeHDGrgFDG+ryOgp8Rp9nlgqhbjNPIKvVoHdlu8FBRdHwFkAt+S2d5IW5CtRgKQ8TmfpVW9YvsUFD21qXW2qIhLynEacxNJ/bz6ytBl8FhsUs1OBLlO2RBaXEYVmFGvwWyeUfJ1CrWg0vssYM80X2wmguBjHLawAjJPXGVwm0cQZA8OTBIwEDIuVWgiow4hRfFWqIYKRe4ybPU7UacjM1PldSLweiZau1V5NV7IEGd0zqjdhRkM/61WBrQCjQasl/hARG2az4OkW0wK+WzA6gAn1FhRpdlUogFDqVA7GzfsiJHAiSVtKpIrUHobg8n92SLAhCnUiBh2JbtPyG4LBkVORAbdPHpeCS9EpLpFzAA++pUEP9OtNJSNTZaxchenYOBCk4jXRVvgCap/RNqBANNM9j8Mh5D17bPG07Ogst4YzJTk5PWjuPGsYPQP2TyQoMCvkgjNEvar9qq/k70V4l3ngOhJPYvl9KlTtYZ5k28X7igRsuUkZuh22tQh5zKX1+ZbunVxAw5ZtcVKhh9BS/xRsXl95M5OeR0WqFPQK6kA+W5xPeJJ+ey0KNDx+sl+yg89mtXvJ5qY9UPJ+a+arMoEKJff4UtB49Avaf+PUR4XVMxBVf/FSI+hWbrAxJdJ968XCIGSYyCENLfpM5qMX47zvGgD1QMXk5utj3QD7SPaIUk1nQC5V5k0qkIaDOGJjUggDUkZxqERKhsydHq0r6JxsWSUqYCIuHsSeX88T4nYM6aygrV2E1nwMR9C6iEE/8BsRuKrTQrv4AC8CYGTVTv4OHMAnWfuJjINTPybygoz5mLy+NJI7smnQEtvz4Q3qTYTIpDy6nmmQfywo0qGxW7RyIqb+dfzyzbSdQnK24azrOvHKygtKUBV5L9dzHRJwU0eJnwGYyDlJlIjAfz+gVJyxw80buHFZezHIflPge0tPDdBDtuENWyXAirX4Y96kIWTjjPqvSmHe3J76fcIEcyKUpF5gnlI0Wb4sukQO5MJVDnU033RZd+fOzTdAD6qvR3RuQJnMgl6W71+qyHEibkZfwnnHDUN+6VgeAoweQcj8E+J/61RejO4b6IjmQC1J2aiAlgPpmP3xxRmD+278LswmDICz8CuWaXbnZnzJY1IW63W9yF+G/RNsoLPu1o2JbTdyu1ofyHpSlvjszSmx1WxopU94LejfbRW+aOoHreEWIluVATGMe/baxvk+aRq+yL6341dx0ZC22E3WvujX7j1DcdYeSldb6wVbDmQRX/ubAH6BlLwrsulBbZNgPTmWcH6TSZxBFg1O/+Jy11Ywf9l+j8eMHcnXpedPvul2j6JsJ3Fa3S8mzelGvC59FedAp6kevr5E798rhLMuBgG4PnHng9inx2vop716ML3hYU/yFhe7O/FSH9XMghAy4rWGfbBkC4RfzLeCNEt6UeAt4U+KNEn6AD8jxzs/56wltOGW/YF4dmHOoLXxPENSbEo8/wE1s4L0c3wYe17t4wNs53pd5GJUdaYSW+YHEGxJvSkKbktCcv77QZQPi2VCzWk0uaSWPUreB51LneCcntW9pSG3do9BVtjrhB8ALqVPehs9ueSU8lxp4LmmOF5KySmVeSF1i9qx7FLqVj9XP49tn8Q08+G6ErvCrq1TD+bFq2Kk6WDqqIbuoBbp9+0KX5kB+ZPx0DN5PjJ8wHXcldEVgfsNSP6B+QK0DdW2zZzZo9rSG8SZs9a8KbZbMwlxmSP9lf+OXha7vV1sXclG1hvRz/epbEPoRLV4vWnxA/YD670Fd21ZLvP3TIV0Zxq+VA/ktoUt24wq+fRbfzvH2j/kC4e5M6Dp+tZXlLzCMW0371Tcj9CMHcjWhH4H5A+q/C/XV0wlmWTpBzIU2ZatvRmieA0l3wdTjvSq+nePtLN+uy3t5/m6E/h8gBiHCnBNqOQAAAABJRU5ErkJggg=="></a></li>
+                                        <li class="appWrapper-DesktopFooter-li"><a class="appWrapper-Footer-a"
+                                            href=""
+                                            target="_blank" rel="noopener noreferrer">
+                                            <img alt="Google Play" height="32"
+                                                src="https://play.google.com/intl/en_us/badges/static/images/badges/vi_badge_web_generic.png?hl=vi"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="appWrapper-DesktopFooter-item">
+                            <p class="appWrapper-DesktopFooter-heading">Liên hệ</p>
+                            <ul class="appWrapper-Footer-ul">
+                                <li class="appWrapper-DesktopFooter-li"><a class="appWrapper-Footer-a"
+                                    href="" target="_blank"
+                                    rel="noopener noreferrer">Liên hệ hỗ trợ</a></li>
+                            </ul>
+                        </div>
+                        <div class="appWrapper-DesktopFooter-item-col">
+                            <div class="appWrapper-DesktopFooter-item">
+                                <p class="appWrapper-DesktopFooter-heading">Liên kết</p>
+                                <ul class="appWrapper-Footer-ul appWrapper-Footer-ul-row" style="flex-direction: row; width: 110px;">
+                                    <li class="appWrapper-DesktopFooter-li appWrapper-DesktopFooter-li-icon">
+                                        <a class="appWrapper-Footer-a" href="" target="_blank" rel="noopener noreferrer">
+                                            <img height="50" class="appWrapper-DesktopFooter-icon" alt="Youtube" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/YouTube_play_button_circular_%282013-2017%29.svg/1024px-YouTube_play_button_circular_%282013-2017%29.svg.png">
+                                        </a>
+                                    </li>
+                                    <li class="appWrapper-DesktopFooter-li">
+                                        <a class="appWrapper-Footer-a" href="" target="_blank" rel="noopener noreferrer">
+                                            <img height="50" class="appWrapper-DesktopFooter-icon" alt="Facebook" src="https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/facebook-round-color.png">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <hr class="appWrapper-DesktopFooter-hr-bottom">
+                <section class="appWrapper-DesktopFooter-container-bottom">
+                    <address class="appWrapper-DesktopFooter-address">&copy; <%: DateTime.Now.Year %> - Tìm nhà trọ</address>
+                </section>
         </footer>
     </form>
-    <style>
-        html {
-            height: 100vh;
-        }
-
-        body {
-            margin: 0px;
-            height: 100vh;
-            font-family: sans-serif;
-        }
-
-            body a {
-                text-decoration: none;
-            }
-
-        .container {
-            padding: 0px 100px;
-        }
-
-        .body-content {
-            min-height: calc( 100% - 144px);
-        }
-
-        footer {
-            padding: 20px;
-            text-align: center;
-            border-top: 1px solid #e2dede;
-        }
-    </style>
 </body>
 </html>

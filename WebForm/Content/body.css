@@ -1,0 +1,24 @@
+﻿.body-content {
+    min-height: calc( 100vh - 290px);
+    display: flex;
+    flex-direction: row;
+    padding: 0px 70px;
+}
+
+.ads {
+    width: 200px;
+}
+
+.main-container {
+    flex-grow: 1;
+}
+
+@media (max-width: 680px) {
+
+    .body-content{
+        padding:0px;
+    }
+    .ads{
+        display:none;
+    }
+}

@@ -20,6 +20,11 @@ namespace WebForm.SqlServer
             appContext.SaveChanges();
             return rs;
         }
+        public Post GetPostById(int id)
+        {
+            var post = appContext.Post.FirstOrDefault(a => a.Id == id);
+            return post;
+        }
         public List<Post> GetPostsByUserId(int userId)
         {
             var posts = appContext.Post.Where(a => a.UserId == userId);

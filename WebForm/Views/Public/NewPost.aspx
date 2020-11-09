@@ -4,114 +4,124 @@
     <title>Tạo tin mới</title>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
-    <div>
-        <h3>Tạo tin</h3>
-    </div>
-    <hr />
     <div class="form-detail">
-        <div class="main-field">
-            <div class="post-Item">
-                <h4>Tiêu đề</h4>
-                <asp:TextBox ID="tbTitle" runat="server" CssClass="input-field">
+        <div class="main-field panel">
+            <div class="panel-heading">
+                Thông tin chính
+            </div>
+            <div class="panel-body">
+                <div class="post-Item">
+                    <asp:TextBox ID="tbTitle" runat="server" CssClass="input-field">
 
-                </asp:TextBox>
-                <asp:RequiredFieldValidator
-                    ID="rfvTitle"
-                    ControlToValidate="tbTitle"
-                    ErrorMessage="Tiêu đề không được để trống"
-                    Display="Dynamic"
-                    runat="server" ForeColor="Red">
+                    </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="rfvTitle"
+                        ControlToValidate="tbTitle"
+                        ErrorMessage="Tiêu đề không được để trống"
+                        Display="Dynamic"
+                        runat="server" ForeColor="Red">
                             * Tiêu đề không được để trống
-                </asp:RequiredFieldValidator>
-            </div>
-            <div class="post-Item">
-                <h4>Mô tả</h4>
-                <textarea id="tbDes" runat="server" class="input-field">
-                </textarea>
-            </div>
-            <div class="post-Item">
-                <h4>Giá</h4>
-                <asp:TextBox ID="tbPrice" runat="server" TextMode="Number" CssClass="input-field">
+                    </asp:RequiredFieldValidator>
+                </div>
+                <div class="post-Item">
+                    <textarea id="tbDes" runat="server" class="input-field" placeholder="Mô tả"></textarea>
+                </div>
+                <div class="post-Item">
+                    <span>Giá : </span>
+                    <asp:TextBox ID="tbPrice" runat="server" TextMode="Number" CssClass="input-field">
 
-                </asp:TextBox>
-            </div>
-            <div class="post-Item">
-                <h4>Ảnh/video</h4>
-                <asp:FileUpload ID="upMedia" runat="server" AllowMultiple="true" ClientIDMode="Static" />
-            </div>
-            <div id="previewMedia" class="post-Item">
+                    </asp:TextBox>
+                </div>
             </div>
         </div>
-        <div>
-            <button id="btnMoreField" type="button">Mô tả thêm</button>
-        </div>
-        <div id="more-field" class="more-field" style="display: none">
-            <div class="post-Item">
+        <div class="more-field panel" style="margin-top: 20px;">
+            <div class="panel-heading">
+                Ảnh và video
+                <button name="btn-collapse" type="button" class="navigator-Collapse">
+                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                </button>
             </div>
-            <div class="post-Item">
-                <h4>Diện tích</h4>
-                <asp:TextBox ID="tbAcreage" runat="server" CssClass="input-field">
-
-                </asp:TextBox>
-            </div>
-            <div class="post-Item">
-                <h4>Giá điện</h4>
-                <asp:TextBox ID="tbEprice" runat="server" TextMode="Number" CssClass="input-field">
-
-                </asp:TextBox>
-            </div>
-            <div class="post-Item">
-                <h4>Giá nước</h4>
-                <asp:TextBox ID="tbWprice" runat="server" TextMode="Number" CssClass="input-field">
-
-                </asp:TextBox>
-            </div>
-            <div class="post-Item">
-                <h4>Số người tối đa</h4>
-                <asp:TextBox ID="tbMaxmem" runat="server" TextMode="Number" CssClass="input-field">
-
-                </asp:TextBox>
-            </div>
-            <div class="post-Item">
-                <h4>Chung chủ</h4>
-                <asp:CheckBox ID="cbWithHost" runat="server" CssClass="input-field"></asp:CheckBox>
-            </div>
-            <div class="post-Item">
-                <h4>Khép kín</h4>
-                <asp:CheckBox ID="cbSelfContained" runat="server" CssClass="input-field"></asp:CheckBox>
-            </div>
-            <div class="post-Item">
-                <h4>Địa chỉ</h4>
-                <asp:TextBox ID="tbAddress" runat="server" CssClass="input-field">
-
-                </asp:TextBox>
-            </div>
-            <div class="post-Item">
-                <h4>Tỉnh</h4>
-                <asp:DropDownList ID="dlProvinceId" runat="server" onchange="ChangeProvince()">
-                    <asp:ListItem Value="null" Text="Tỉnh thành" Selected="True"></asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div class="post-Item">
-                <h4>Thành phố</h4>
-                <asp:DropDownList ID="dlCityId" runat="server">
-                </asp:DropDownList>
-            </div>
-            <div class="post-Item">
-                <h4>Quận</h4>
-                <asp:DropDownList ID="dlDistrictId" runat="server">
-                </asp:DropDownList>
-            </div>
-            <div class="post-Item">
-                <h4>Đường</h4>
-                <asp:DropDownList ID="dlLineId" runat="server">
-                </asp:DropDownList>
+            <div class="panel-body hidden">
+                <div class="post-Item">
+                    <span>Ảnh/video</span>
+                    <asp:FileUpload ID="upMedia" runat="server" AllowMultiple="true" ClientIDMode="Static" />
+                </div>
+                <div id="previewMedia" class="post-Item">
+                </div>
             </div>
         </div>
-        <div class="post-Item" style="text-align: center">
-            <asp:Button ID="btCreate" runat="server" Text="Tạo" OnClick="btCreate_Click" />
+        <div class="more-field panel" style="margin-top: 20px;">
+            <div class="panel-heading">
+                Mô tả thêm
+                <button name="btn-collapse" type="button" class="navigator-Collapse">
+                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="panel-body hidden">
+                <div class="post-Item">
+                    <span>Diện tích</span>
+                    <asp:TextBox ID="tbAcreage" runat="server" CssClass="input-field">
 
+                    </asp:TextBox>
+                </div>
+                <div class="post-Item">
+                    <span>Giá điện</span>
+                    <asp:TextBox ID="tbEprice" runat="server" TextMode="Number" CssClass="input-field">
+
+                    </asp:TextBox>
+                </div>
+                <div class="post-Item">
+                    <span>Giá nước</span>
+                    <asp:TextBox ID="tbWprice" runat="server" TextMode="Number" CssClass="input-field">
+
+                    </asp:TextBox>
+                </div>
+                <div class="post-Item">
+                    <span>Số người tối đa</span>
+                    <asp:TextBox ID="tbMaxmem" runat="server" TextMode="Number" CssClass="input-field">
+
+                    </asp:TextBox>
+                </div>
+                <div class="post-Item">
+                    <span>Chung chủ</span>
+                    <asp:CheckBox ID="cbWithHost" runat="server" CssClass="input-field"></asp:CheckBox>
+                </div>
+                <div class="post-Item">
+                    <span>Khép kín</span>
+                    <asp:CheckBox ID="cbSelfContained" runat="server" CssClass="input-field"></asp:CheckBox>
+                </div>
+                <div class="post-Item">
+                    <span>Địa chỉ</span>
+                    <asp:TextBox ID="tbAddress" runat="server" CssClass="input-field">
+
+                    </asp:TextBox>
+                </div>
+                <div class="post-Item">
+                    <span>Tỉnh</span>
+                    <asp:DropDownList ID="dlProvinceId" runat="server" onchange="ChangeProvince()">
+                        <asp:ListItem Value="null" Text="Tỉnh thành" Selected="True"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="post-Item">
+                    <span>Thành phố</span>
+                    <asp:DropDownList ID="dlCityId" runat="server">
+                    </asp:DropDownList>
+                </div>
+                <div class="post-Item">
+                    <span>Quận</span>
+                    <asp:DropDownList ID="dlDistrictId" runat="server">
+                    </asp:DropDownList>
+                </div>
+                <div class="post-Item">
+                    <span>Đường</span>
+                    <asp:DropDownList ID="dlLineId" runat="server">
+                    </asp:DropDownList>
+                </div>
+            </div>
         </div>
+    </div>
+    <div style="margin: 20px; text-align: center;">
+        <asp:Button ID="btCreate" runat="server" Text="Tạo" OnClick="btCreate_Click" CssClass="btn" />
     </div>
     <%--<asp:FileUpload ID="uploadFile" runat="server" AllowMultiple="true" />
     <asp:Button ID="btSubmit" runat="server" OnClick="btSubmit_Click" Text="Submit"/>
@@ -119,12 +129,10 @@
     <video height="300" width="400" id="video" runat="server" controls>
         <source type="video/mp4" src='<%= GetVideoLink() %>'/>
     </video>--%>
-    <img id="blah" src="" width="200" height="150"/>
     <style>
         .form-detail {
             padding-left: 50px;
             padding-right: 50px;
-            padding-top: 20px;
         }
 
         .input-field {
@@ -132,6 +140,7 @@
             height: 20px;
             line-height: 20px;
             padding: 5px;
+            border-radius: 5px;
         }
 
         textarea .input-field {
@@ -139,27 +148,103 @@
         }
 
         select {
-            height: 50px;
+            height: 30px;
             width: 100%;
         }
 
         .post-Item {
             margin-bottom: 20px;
+            display: flex;
+        }
+
+            .post-Item span {
+                width: 50%;
+            }
+
+        .mediaItem {
+            height: 50px;
+            width: 100px;
+            object-fit: contain;
+            border: 1px solid;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        .main-field {
+            border: 1px solid;
+            border-top: 0px;
+        }
+
+        .more-field {
+            border: 1px solid;
+            border-top: 0px;
+        }
+
+        .panel-heading {
+            padding: 0px 10px;
+            background: #055699;
+            color: #FFF;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+        }
+
+        .panel-body {
+            padding: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            padding: 6px 12px;
+            line-height: 1.5;
+            border-radius: 4px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        button.navigator-Collapse {
+            float: right;
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none !important;
         }
     </style>
     <script>
-        var btnMoreField = document.getElementById("btnMoreField");
-        var moreFieldContainer = document.getElementById("more-field");
         var upMedia = document.getElementById("upMedia");
         var previewContainer = document.getElementById("previewMedia");
+        var btnCollapse = document.getElementsByName("btn-collapse");
+        console.log(btnCollapse);
         var mediaMetadata = [];
-        function MediaObj(name,path) {
-            this.Name = name,
-            this.Path = path
+        for (var i = 0; i < btnCollapse.length; i++) {
+            btnCollapse[i].onclick = function () {
+                console.log(this);
+                var panel = this.closest(".panel");
+                var panelBody = panel.querySelector(".panel-body");
+                var checkCollapse = panelBody.classList.contains("hidden");
+                if (checkCollapse) {
+                    panelBody.classList.remove("hidden");
+                } else {
+                    panelBody.classList.add("hidden");
+                }
+            }
         }
-        btnMoreField.onclick = function () {
-            moreFieldContainer.style.display = "initial";
-            this.style.display = "none";
+        function MediaObj(name, path) {
+            this.Name = name,
+                this.Path = path
         }
         function ChangeProvince() {
             //var xhttp = new XMLHttpRequest();
@@ -176,18 +261,21 @@
         }
         upMedia.onchange = function (e) {
             if (upMedia.files.length == 0) {
-                previewContainer.empty();
+                previewContainer.innerHTML = "";
             }
             for (var i = 0; i < upMedia.files.length; i++) {
-                if (upMedia.files && upMedia.files[0]) {
-                    var reader = new FileReader();
+                var item = upMedia.files[i];
+                console.log(item);
 
-                    reader.onload = function (e) {
-                        $('#blah').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(upMedia.files[0]); // convert to base64 string
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var newPreview = document.createElement("img");
+                    newPreview.className = "mediaItem";
+                    newPreview.style.cssText = "";
+                    newPreview.src = e.target.result;
+                    previewContainer.appendChild(newPreview);
                 }
+                reader.readAsDataURL(item);
             }
         };
     </script>

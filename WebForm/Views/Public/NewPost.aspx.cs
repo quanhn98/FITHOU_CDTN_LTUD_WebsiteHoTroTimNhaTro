@@ -55,6 +55,8 @@ namespace WebForm.Views.Public
                 dlProvinceId.DataTextField = "Name";
                 dlProvinceId.DataValueField = "Id";
                 dlProvinceId.DataBind();
+                var subTitle = (Label)Master.FindControl("subTitles");
+                if (subTitle != null) subTitle.Text = "Tạo tin mới";
             }
         }
         protected void btCreate_Click(object sender, EventArgs e)
@@ -85,7 +87,7 @@ namespace WebForm.Views.Public
             var result = PostManager.Add(post);
             if (result != null)
             {
-                Response.Redirect("Profile");
+                Response.Redirect("DetailPost.aspx?id="+result.Id+"");
             }
         }
         public void GetMediaPaths()
