@@ -127,6 +127,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\logo.jpg" />
     <Content Include="Content\Images\logo2.png" />
+    <Content Include="Content\Images\no-image.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -139,6 +140,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Ajax\Test.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -170,21 +172,26 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Views\Public\Address.aspx" />
-    <Content Include="Views\Public\DetailPost.aspx" />
-    <Content Include="Views\Public\EditPost.aspx" />
-    <Content Include="Views\Public\Error.aspx" />
-    <Content Include="Views\Public\Index.aspx" />
-    <Content Include="Views\Public\NewPost.aspx" />
-    <Content Include="Views\Public\Profile.aspx" />
-    <Content Include="Views\Public\SignIn.aspx" />
-    <Content Include="Views\Public\SignUp.aspx" />
-    <Content Include="Views\Public\TestAjax.aspx" />
+    <Content Include="Views\Address.aspx" />
+    <Content Include="Views\DetailPost.aspx" />
+    <Content Include="Views\EditPost.aspx" />
+    <Content Include="Views\Error.aspx" />
+    <Content Include="Views\FindMap.aspx" />
+    <Content Include="Views\GetAddress.aspx" />
+    <Content Include="Views\Index2.aspx" />
+    <Content Include="Views\NewPost.aspx" />
+    <Content Include="Views\Profile.aspx" />
+    <Content Include="Views\SignIn.aspx" />
+    <Content Include="Views\SignUp.aspx" />
+    <Content Include="Views\TestAjax.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ajax\TestAjax.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="App_Start\AppAuthentication.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -230,71 +237,88 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Public\Address.aspx.cs">
+    <Compile Include="Views\Address.aspx.cs">
       <DependentUpon>Address.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Public\Address.aspx.designer.cs">
+    <Compile Include="Views\Address.aspx.designer.cs">
       <DependentUpon>Address.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Public\DetailPost.aspx.cs">
+    <Compile Include="Views\DetailPost.aspx.cs">
       <DependentUpon>DetailPost.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Public\DetailPost.aspx.designer.cs">
+    <Compile Include="Views\DetailPost.aspx.designer.cs">
       <DependentUpon>DetailPost.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Public\EditPost.aspx.cs">
+    <Compile Include="Views\EditPost.aspx.cs">
       <DependentUpon>EditPost.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Public\EditPost.aspx.designer.cs">
+    <Compile Include="Views\EditPost.aspx.designer.cs">
       <DependentUpon>EditPost.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Public\Error.aspx.cs">
+    <Compile Include="Views\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Public\Error.aspx.designer.cs">
+    <Compile Include="Views\Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Public\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Views\FindMap.aspx.cs">
+      <DependentUpon>FindMap.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Public\NewPost.aspx.cs">
+    <Compile Include="Views\FindMap.aspx.designer.cs">
+      <DependentUpon>FindMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GetAddress.aspx.cs">
+      <DependentUpon>GetAddress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GetAddress.aspx.designer.cs">
+      <DependentUpon>GetAddress.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Index2.aspx.cs">
+      <DependentUpon>Index2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Index2.aspx.designer.cs">
+      <DependentUpon>Index2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewPost.aspx.cs">
       <DependentUpon>NewPost.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Public\NewPost.aspx.designer.cs">
+    <Compile Include="Views\NewPost.aspx.designer.cs">
       <DependentUpon>NewPost.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Public\Profile.aspx.cs">
+    <Compile Include="Views\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Public\Profile.aspx.designer.cs">
+    <Compile Include="Views\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Public\SignIn.aspx.cs">
+    <Compile Include="Views\SignIn.aspx.cs">
       <DependentUpon>SignIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Public\SignIn.aspx.designer.cs">
+    <Compile Include="Views\SignIn.aspx.designer.cs">
       <DependentUpon>SignIn.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Public\SignUp.aspx.cs">
+    <Compile Include="Views\SignUp.aspx.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Public\SignUp.aspx.designer.cs">
+    <Compile Include="Views\SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Public\TestAjax.aspx.cs">
+    <Compile Include="Views\TestAjax.aspx.cs">
       <DependentUpon>TestAjax.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Public\TestAjax.aspx.designer.cs">
+    <Compile Include="Views\TestAjax.aspx.designer.cs">
       <DependentUpon>TestAjax.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -302,7 +326,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="ImageUpload\" />
     <Folder Include="VideoUpload\" />
-    <Folder Include="Views\Private\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

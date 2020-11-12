@@ -38,5 +38,24 @@
             </p>
         </div>
     </div>
+    <script>
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+        }
 
+        xmlhttp.open("Get", "/Default/Test", true);
+        xmlhttp.setRequestHeader("content-type", "application/json");
+        xmlhttp.setRequestHeader("Accept", "application/json");
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var jsonResultBuffer = JSON.parse(xmlhttp.responseText);
+                objectData = jsonResultBuffer.d;
+                DisplayTable();
+            }
+        };
+        xmlhttp.send(null);
+    </script>
 </asp:Content>

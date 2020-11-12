@@ -15,6 +15,15 @@ namespace WebForm.Views.Public
     {
 
         /// <summary>
+        /// postTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl postTitle;
+
+        /// <summary>
         /// tbTitle control.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,13 @@ namespace WebForm.Views.Public
         protected global::System.Web.UI.WebControls.TextBox tbPrice;
 
         /// <summary>
-        /// upMedia control.
+        /// RequiredFieldValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload upMedia;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
         /// tbAcreage control.
@@ -67,6 +76,42 @@ namespace WebForm.Views.Public
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbAcreage;
+
+        /// <summary>
+        /// dlCityId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dlCityId;
+
+        /// <summary>
+        /// dlDistrictId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dlDistrictId;
+
+        /// <summary>
+        /// dlLineId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dlLineId;
+
+        /// <summary>
+        /// tbAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbAddress;
 
         /// <summary>
         /// tbEprice control.
@@ -114,49 +159,31 @@ namespace WebForm.Views.Public
         protected global::System.Web.UI.WebControls.CheckBox cbSelfContained;
 
         /// <summary>
-        /// tbAddress control.
+        /// upMedia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbAddress;
+        protected global::System.Web.UI.WebControls.FileUpload upMedia;
 
         /// <summary>
-        /// dlProvinceId control.
+        /// tbCoordinatesX control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlProvinceId;
+        protected global::System.Web.UI.WebControls.TextBox tbCoordinatesX;
 
         /// <summary>
-        /// dlCityId control.
+        /// tbCoordinatesY control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlCityId;
-
-        /// <summary>
-        /// dlDistrictId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlDistrictId;
-
-        /// <summary>
-        /// dlLineId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlLineId;
+        protected global::System.Web.UI.WebControls.TextBox tbCoordinatesY;
 
         /// <summary>
         /// btCreate control.

@@ -9,6 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            Đã có lỗi xảy ra
         </div>
     </form>
 </body>

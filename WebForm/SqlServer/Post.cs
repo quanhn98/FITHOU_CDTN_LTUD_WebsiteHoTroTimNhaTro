@@ -54,9 +54,10 @@ namespace WebForm.SqlServer
         public double? Price { get; set; }
 
         public bool Closed { get; set; }
-        public int CountView { get; set; }
+        public int? CountView { get; set; }
         public string CoordinatesX { get; set; }
         public string CoordinatesY { get; set; }
+        public DateTime? PostedDate { get; set; } 
 
         public virtual City City { get; set; }
 
@@ -67,5 +68,8 @@ namespace WebForm.SqlServer
         public virtual Province Province { get; set; }
 
         public virtual User User { get; set; }
+
+        [NotMapped]
+        public string Thumbnail { get; set; } = "/Content/Images/no-image.jpg";
     }
 }

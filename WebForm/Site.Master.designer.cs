@@ -24,22 +24,13 @@ namespace WebForm
         protected global::System.Web.UI.WebControls.ContentPlaceHolder Header;
 
         /// <summary>
-        /// hlProfile control.
+        /// hlSignInContainer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlProfile;
-
-        /// <summary>
-        /// hlNewPost control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlNewPost;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hlSignInContainer;
 
         /// <summary>
         /// hlSignIn control.
@@ -51,6 +42,15 @@ namespace WebForm
         protected global::System.Web.UI.WebControls.HyperLink hlSignIn;
 
         /// <summary>
+        /// btnSignOutContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl btnSignOutContainer;
+
+        /// <summary>
         /// btSignOut control.
         /// </summary>
         /// <remarks>
@@ -58,6 +58,60 @@ namespace WebForm
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btSignOut;
+
+        /// <summary>
+        /// hlProfileContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hlProfileContainer;
+
+        /// <summary>
+        /// hlProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlProfile;
+
+        /// <summary>
+        /// hlNewPostContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hlNewPostContainer;
+
+        /// <summary>
+        /// hlNewPost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlNewPost;
+
+        /// <summary>
+        /// hlFindMapContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hlFindMapContainer;
+
+        /// <summary>
+        /// hlFindMap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlFindMap;
 
         /// <summary>
         /// MainContent control.

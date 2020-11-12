@@ -24,156 +24,192 @@ namespace WebForm.Views.Public
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DetailTitle;
 
         /// <summary>
-        /// tbTitle control.
+        /// btnDelete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbTitle;
+        protected global::System.Web.UI.WebControls.Button btnDelete;
 
         /// <summary>
-        /// rfvTitle control.
+        /// btnClose control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTitle;
+        protected global::System.Web.UI.WebControls.Button btnClose;
 
         /// <summary>
-        /// tbDes control.
+        /// btnEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea tbDes;
+        protected global::System.Web.UI.WebControls.Button btnEdit;
 
         /// <summary>
-        /// tbPrice control.
+        /// btnOpen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbPrice;
+        protected global::System.Web.UI.WebControls.Button btnOpen;
 
         /// <summary>
-        /// upMedia control.
+        /// Repeater1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload upMedia;
+        protected global::System.Web.UI.WebControls.Repeater Repeater1;
 
         /// <summary>
-        /// tbAcreage control.
+        /// postTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbAcreage;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl postTitle;
 
         /// <summary>
-        /// tbEprice control.
+        /// time control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbEprice;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl time;
 
         /// <summary>
-        /// tbWprice control.
+        /// price control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbWprice;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl price;
 
         /// <summary>
-        /// tbMaxmem control.
+        /// address control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbMaxmem;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor address;
 
         /// <summary>
-        /// cbWithHost control.
+        /// description control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbWithHost;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl description;
 
         /// <summary>
-        /// cbSelfContained control.
+        /// acreage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbSelfContained;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl acreage;
 
         /// <summary>
-        /// tbAddress control.
+        /// ePrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbAddress;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ePrice;
 
         /// <summary>
-        /// dlProvinceId control.
+        /// eWater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlProvinceId;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl eWater;
 
         /// <summary>
-        /// dlCityId control.
+        /// maxMem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlCityId;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl maxMem;
 
         /// <summary>
-        /// dlDistrictId control.
+        /// withHost control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlDistrictId;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl withHost;
 
         /// <summary>
-        /// dlLineId control.
+        /// selfC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlLineId;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl selfC;
 
         /// <summary>
-        /// btCreate control.
+        /// close control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btCreate;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl close;
+
+        /// <summary>
+        /// coordinatesX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox coordinatesX;
+
+        /// <summary>
+        /// PostId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox PostId;
+
+        /// <summary>
+        /// coordinatesY control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox coordinatesY;
+
+        /// <summary>
+        /// createdUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl createdUser;
     }
 }

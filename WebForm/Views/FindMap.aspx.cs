@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebForm.Views.Public
+namespace WebForm.Views
 {
-    public partial class TestAjax : System.Web.UI.Page
+    public partial class FindMap : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write("OK ajax");
+
         }
     }
 }

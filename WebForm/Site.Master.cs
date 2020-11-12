@@ -20,30 +20,39 @@ namespace WebForm
             //Request.Cookies.Remove("ASP.NET_SessionId");
              if (!IsPostBack)
             {
-                hlProfile.Visible = false;
-                btSignOut.Visible = false;
-                hlSignIn.Visible = true;
+                hlProfileContainer.Visible = false;
+                btnSignOutContainer.Visible = false;
+                hlSignInContainer.Visible = true;
                 var userNameCookieValue = Request.Cookies["UserName"];
                 var userNameSessionValue = Session["UserName"];
                 var cookieCheck = (userNameCookieValue != null && !string.IsNullOrEmpty(userNameCookieValue.Value));
                 var sessionCheck = !string.IsNullOrEmpty(userNameSessionValue as string);
                 if (cookieCheck || sessionCheck)
                 {
-                    var userLogon = UserManager.GetUserByName(userNameCookieValue.Value);
-                    if (userLogon == null)
+                    if (cookieCheck)
                     {
-                        return;
-                    }
-                    hlSignIn.Visible = false;
-                    hlProfile.Visible = true;
-                    hlProfile.Text = cookieCheck ? userNameCookieValue.Value : (string)userNameSessionValue;
-                    if (!sessionCheck)
-                    {
+                        var userLogon = UserManager.GetUserByName(userNameCookieValue.Value);
+                        if (userLogon == null)
+                        {
+                            return;
+                        }
                         Session["UserName"] = userNameCookieValue.Value;
                         Session["UserId"] = userLogon.Id;
+                    }else if (sessionCheck)
+                    {
+                        var userLogon = UserManager.GetUserByName(userNameSessionValue.ToString());
+                        if (userLogon == null)
+                        {
+                            return;
+                        }
+                        Session["UserName"] = userNameSessionValue;
+                        Session["UserId"] = userLogon.Id;
                     }
-                    btSignOut.Visible = true;
-                    hlNewPost.Visible = true;
+                    hlSignInContainer.Visible = false;
+                    hlProfileContainer.Visible = true;
+                    hlProfile.Text = cookieCheck ? userNameCookieValue.Value : (string)userNameSessionValue;
+                    btnSignOutContainer.Visible = true;
+                    hlNewPostContainer.Visible = true;
                 }
             }
         }

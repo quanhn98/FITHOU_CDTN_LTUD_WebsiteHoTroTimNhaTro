@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebForm.Views.Public
+namespace WebForm.Views
 {
 
 
-    public partial class EditPost
+    public partial class GetAddress
     {
 
         /// <summary>

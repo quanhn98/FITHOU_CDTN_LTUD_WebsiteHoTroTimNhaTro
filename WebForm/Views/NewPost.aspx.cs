@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -50,13 +51,6 @@ namespace WebForm.Views.Public
             if (!IsPostBack)
             {
                 CheckUserLogon();
-                var provinces = ProvinceManager.GetProvinces();
-                dlProvinceId.DataSource = provinces;
-                dlProvinceId.DataTextField = "Name";
-                dlProvinceId.DataValueField = "Id";
-                dlProvinceId.DataBind();
-                var subTitle = (Label)Master.FindControl("subTitles");
-                if (subTitle != null) subTitle.Text = "Tạo tin mới";
             }
         }
         protected void btCreate_Click(object sender, EventArgs e)
@@ -77,17 +71,18 @@ namespace WebForm.Views.Public
             post.WithHost = cbWithHost.Checked;
             post.SelfContained = cbSelfContained.Checked;
             if (!string.IsNullOrEmpty(tbAddress.Text)) post.HouseAddress = tbAddress.Text;
-            if (dlLineId.SelectedValue != null && dlLineId.SelectedValue.Length>0) post.LineId = int.Parse(dlLineId.SelectedValue);
-            if (dlDistrictId.SelectedValue != null && dlDistrictId.SelectedValue.Length>0 ) post.DistrictId = int.Parse(dlDistrictId.SelectedValue);
-            if (dlCityId.SelectedValue != null && dlCityId.SelectedValue.Length>0) post.CityId = int.Parse(dlCityId.SelectedValue);
-            if (dlProvinceId.SelectedValue != null && dlProvinceId.SelectedValue.Length>0 ) post.ProvinceId = int.Parse(dlProvinceId.SelectedValue);
+            if (dlLineId.SelectedValue != null && dlLineId.SelectedValue.Length > 0) post.LineId = int.Parse(dlLineId.SelectedValue);
+            if (dlDistrictId.SelectedValue != null && dlDistrictId.SelectedValue.Length > 0) post.DistrictId = int.Parse(dlDistrictId.SelectedValue);
+            if (dlCityId.SelectedValue != null && dlCityId.SelectedValue.Length > 0) post.CityId = int.Parse(dlCityId.SelectedValue);
+            if (!string.IsNullOrEmpty(tbCoordinatesX.Text)) post.CoordinatesX = tbCoordinatesX.Text;
+            if (!string.IsNullOrEmpty(tbCoordinatesY.Text)) post.CoordinatesY = tbCoordinatesY.Text;
             post.ImagePaths = ImagePaths;
             post.VideoPaths = VideoPaths;
             post.UserId = int.Parse(Session["UserId"].ToString());
             var result = PostManager.Add(post);
             if (result != null)
             {
-                Response.Redirect("DetailPost.aspx?id="+result.Id+"");
+                Response.Redirect("DetailPost.aspx?id=" + result.Id + "");
             }
         }
         public void GetMediaPaths()
@@ -103,13 +98,14 @@ namespace WebForm.Views.Public
                     if (fileEx.Contains("mp4"))
                     {
                         fileInfo.EnumFileType = EnumFileType.Video;
-                        fileInfo.Path = "/VideoUpload" + item.FileName;
+                        fileInfo.Path = "/VideoUpload/" + item.FileName;
                         item.SaveAs(Path.Combine(Server.MapPath("~/VideoUpload/"), item.FileName));
                         videoPaths.Add(fileInfo);
-                    } else if (fileEx.Contains("jpg") || fileEx.Contains("png"))
+                    }
+                    else if (fileEx.Contains("jpg") || fileEx.Contains("png"))
                     {
                         fileInfo.EnumFileType = EnumFileType.Image;
-                        fileInfo.Path = "/ImageUpload" + item.FileName;
+                        fileInfo.Path = "/ImageUpload/" + item.FileName;
                         item.SaveAs(Path.Combine(Server.MapPath("~/ImageUpload/"), item.FileName));
                         imagePaths.Add(fileInfo);
                     }
@@ -118,50 +114,5 @@ namespace WebForm.Views.Public
             ImagePaths = JsonConvert.SerializeObject(imagePaths);
             VideoPaths = JsonConvert.SerializeObject(videoPaths);
         }
-        //protected void btSubmit_Click(object sender, EventArgs e)
-        //{
-        //    if (uploadFile.HasFile)
-        //    {
-        //        foreach (var item in uploadFile.PostedFiles)
-        //        {
-        //            var fileEx = Path.GetExtension(item.FileName).Substring(1);
-        //            if (fileEx.Contains("mp4"))
-        //            {
-        //                item.SaveAs(System.IO.Path.Combine(Server.MapPath("~/VideoUpload/"), item.FileName));
-        //                video.Attributes["src"] = "/VideoUpload/" + item.FileName;
-        //            }
-        //            else if (fileEx.Contains("jpg"))
-        //            {
-        //                item.SaveAs(System.IO.Path.Combine(Server.MapPath("~/ImageUpload/"), item.FileName));
-        //                test.ImageUrl = "/ImageUpload/" + item.FileName;
-        //            }
-        //            //listofuploadedfiles.Text += String.Format("{0}<br />", item.FileName);
-        //        }
-        //    }
-        //    //string imgName = uploadFile.FileName;
-        //    ////sets the image path  
-        //    //string imgPath = "App_Data/" + imgName;
-        //    ////get the size in bytes that  
-
-        //    //int imgSize = uploadFile.PostedFile.ContentLength;
-
-        //    ////validates the posted file before saving  
-        //    //if (uploadFile.PostedFile != null && uploadFile.PostedFile.FileName != "")
-        //    //{
-        //    //    // 10240 KB means 10MB, You can change the value based on your requirement  
-        //    //    if (uploadFile.PostedFile.ContentLength > 10240)
-        //    //    {
-        //    //        Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "Alert", "alert('File is too big.')", true);
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        //then save it to the Folder  
-        //    //        uploadFile.SaveAs(Server.MapPath(imgPath));
-        //    //        Image.ImageUrl = "~/" + imgPath;
-        //    //        Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "Alert", "alert('Image saved!')", true);
-        //    //    }
-
-        //    //}
-        //}
     }
 }

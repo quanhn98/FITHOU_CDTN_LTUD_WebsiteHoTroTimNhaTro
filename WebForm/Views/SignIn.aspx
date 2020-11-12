@@ -45,7 +45,7 @@
                     <asp:CheckBox ID="cbRememberMe" runat="server" Text="Ghi nhớ" />
                 </div>
             </div>
-            <asp:HyperLink ID="hlSignUp" runat="server" Text="Đăng kí" Target="_self" NavigateUrl="~/Views/Public/SignUp.aspx"></asp:HyperLink>
+            <asp:HyperLink ID="hlSignUp" runat="server" Text="Đăng kí" Target="_self" NavigateUrl="~/Views/SignUp.aspx"></asp:HyperLink>
             <div class="">
                 <asp:Button ID="btSignIn" runat="server" Text="Đăng nhập" OnClick="btSignIn_Click" />
             </div>

@@ -20,25 +20,34 @@
             <div class="appWrapper-Layout-container">
                 <div class="appWrapper-Layout-leftPanel">
                     <a class="appWrapper-Header-logoAnchor"
-                        href="/Views/Public/Index.aspx">
+                        href="/Views/Index2.aspx">
                         <img class="appWrapper-Header-logo"
                             src="/Content/Images/logo2.png" alt="Tìm nhà trọ">Tìm nhà trọ</a>
                 </div>
                 <div class="appWrapper-Layout-rightPanel">
-                    <div class="hover appWrapper-Header-navItem hideIP5">
-                        <asp:HyperLink ID="hlProfile" runat="server" NavigateUrl="~/Views/Public/Profile.aspx" Visible="false" ForeColor="White">
+                    <div class="hover appWrapper-Header-navItem hideIP5" id="hlSignInContainer" runat="server">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        <asp:HyperLink ID="hlSignIn" runat="server" NavigateUrl="~/Views/SignIn.aspx" Text="Đăng nhập">
                         </asp:HyperLink>
                     </div>
-                    <div class="hover appWrapper-Header-navItem hideIP5">
-                        <asp:HyperLink ID="hlNewPost" runat="server" NavigateUrl="~/Views/Public/NewPost.aspx" Text="Đăng tin" ForeColor="Yellow" Visible="false">
+                    <div class="hover appWrapper-Header-navItem hideIP5" id="btnSignOutContainer" runat="server">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <asp:Button ID="btSignOut" runat="server" Text="Đăng xuất"  OnClick="btSignOut_Click" />
+                    </div>
+                    <div class="hover appWrapper-Header-navItem hideIP5" id="hlProfileContainer" runat="server">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <asp:HyperLink ID="hlProfile" runat="server" NavigateUrl="~/Views/Profile.aspx">
                         </asp:HyperLink>
                     </div>
-                    <div class="hover appWrapper-Header-navItem hideIP5">
-                        <asp:HyperLink ID="hlSignIn" runat="server" NavigateUrl="~/Views/Public/SignIn.aspx" Text="Đăng nhập" ForeColor="White">
+                    <div class="hover appWrapper-Header-navItem hideIP5" id="hlNewPostContainer" runat="server">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        <asp:HyperLink ID="hlNewPost" runat="server" NavigateUrl="~/Views/NewPost.aspx" Text="Đăng tin">
                         </asp:HyperLink>
                     </div>
-                    <div class="hover appWrapper-Header-navItem hideIP5">
-                        <asp:Button ID="btSignOut" runat="server" Text="Đăng xuất" Visible="false" OnClick="btSignOut_Click" />
+                    <div class="hover appWrapper-Header-navItem hideIP5" id="hlFindMapContainer" runat="server">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <asp:HyperLink ID="hlFindMap" runat="server" NavigateUrl="~/Views/FindMap.aspx" Text="Bản đồ">
+                        </asp:HyperLink>
                     </div>
                 </div>
             </div>

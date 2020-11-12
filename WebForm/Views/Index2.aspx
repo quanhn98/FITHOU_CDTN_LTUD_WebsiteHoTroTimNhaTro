@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="WebForm.Views.Index" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Index2.aspx.cs" Inherits="WebForm.Views.Index2" %>
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
     <title>Trang chủ</title>
@@ -117,18 +117,21 @@
                 <div class="clearfix">
                     <div class="search_field_item search_field_item_tinhthanh">
                         <label class="search_field_item_label">Tỉnh thành</label>
-                        <select id="search_city" runat="server" class="form-control" name="" tabindex="-1" aria-hidden="true">
-                        </select>
+                        <%--<select id="search_city" runat="server" class="form-control" name="" tabindex="-1" aria-hidden="true">
+                        </select>--%>
+                        <asp:DropDownList ID="search_city" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:DropDownList>
                     </div>
                     <div class="search_field_item search_field_item_quanhuyen">
                         <label class="search_field_item_label">Quận huyện</label>
-                        <select id="search_district" runat="server" class="form-control" name="" data-current="" tabindex="-1" aria-hidden="true">
-                        </select>
+                        <%--<select id="search_district" runat="server" class="form-control" name="" data-current="" tabindex="-1" aria-hidden="true">
+                        </select>--%>
+                        <asp:DropDownList ID="search_district" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:DropDownList>
                     </div>
                     <div class="search_field_item search_field_item_duongpho">
                         <label class="search_field_item_label">Đường phố</label>
-                        <select name="search_line" class="form-control" data-current="" tabindex="-1" aria-hidden="true">
-                        </select>
+                        <%--<select name="search_line" class="form-control" data-current="" tabindex="-1" aria-hidden="true">
+                        </select>--%>
+                        <asp:DropDownList ID="search_line" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:DropDownList>
                     </div>
                     <div class="search_field_item search_field_item_mucgia">
                         <label class="search_field_item_label">Khoảng giá</label>
@@ -137,11 +140,7 @@
                             <option value="1">Dưới 1 triệu</option>
                             <option value="2">1 triệu - 2 triệu</option>
                             <option value="3">2 triệu - 3 triệu</option>
-                            <option value="4">3 triệu - 5 triệu</option>
-                            <option value="5">5 triệu - 7 triệu</option>
-                            <option value="6">7 triệu - 10 triệu</option>
-                            <option value="7">10 triệu - 15 triệu</option>
-                            <option value="8">Trên 15 triệu</option>
+                            <option value="4">3 triệu - 4 triệu</option>
                         </select>
                     </div>
                     <div class="search_field_item search_field_item_dientich">
@@ -150,13 +149,7 @@
                             <option value="0" selected="">Chọn diện tích</option>
                             <option value="1">Dưới 20 m2</option>
                             <option value="2">20 m2 - 30 m2</option>
-                            <option value="3">30 m2 - 50 m2</option>
-                            <option value="4">50 - 60 m2</option>
-                            <option value="5">60 - 70 m2</option>
-                            <option value="6">70 - 80 m2</option>
-                            <option value="7">80 - 90 m2</option>
-                            <option value="8">90 - 100 m2</option>
-                            <option value="9">Trên 100 m2</option>
+                            <option value="3">30 m2 - 40 m2</option>
                         </select>
                     </div>
                     <div class="search_field_item search_field_item_submit">
@@ -168,40 +161,98 @@
         </div>
         <div style="display: flex; padding: 20px;">
             <div class="content" style="flex-grow: 1;">
-
-                <asp:Repeater ID="RepterDetails" runat="server">
-                    <HeaderTemplate>
-                    </HeaderTemplate>
+                <asp:Repeater ID="Repeater1" runat="server">
                     <ItemTemplate>
                         <div id="" class="post" style="background-color: #fbf7ef; display: flex; height: 170px; overflow: hidden; padding: 10px; margin-bottom: 3px;">
                             <a>
-                                <div class="post-thumb" data-background-image="https://static123.com/phongtro123/uploads/images/thumbs/450x300/fit/2020/08/25/4d764d254374bc2ae565_1598297366.jpg"
-                                    style="position: relative; display: block; background-position: center center; background-image: url(&quot;https://static123.com/phongtro123/uploads/images/thumbs/450x300/fit/2020/08/25/4d764d254374bc2ae565_1598297366.jpg&quot;); width: 150px; height: 150px;" data-loaded="true">
+                                <div class="post-thumb" data-background-image="<%# Eval("Thumbnail") %>"
+                                    style="position: relative; display: block; background-position: center center; background-image: url('<%# Eval("Thumbnail") %>'); background-size: cover; background-repeat: no-repeat; width: 150px; height: 150px;"
+                                    data-loaded="true">
                                     <div class="image_number" style="position: absolute; bottom: 0px; right: 0px;"><span>6 ảnh</span></div>
                                 </div>
                             </a>
                             <div class="post-info" style="padding-left: 10px; overflow: hidden">
-                                <h3 class="title" style="margin-top: 0px;"><a class="post-link" style="text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-word; overflow: hidden;"
-                                    href="https://phongtro123.com/phong-duplex-xay-moi-100-lam-van-ben-quan-7-pr309643.html" alt="Phòng Duplex xây mới 100% Lâm Văn Bền quận 7">Phòng Duplex xây mới 100% Lâm Văn Bền quận 7 </a></h3>
-                                <div class="price"><strong>3.3 triệu/tháng</strong></div>
+                                <h3 class="title" style="margin-top: 0px;">
+                                    <a class="post-link" style="text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-word; overflow: hidden;"
+                                        href="/Views/DetailPost.aspx?id=<%# Eval("Id") %>">
+                                        <%# Eval("Title") %>
+                                    </a>
+                                </h3>
+                                <div class="price"><strong><%# Eval("Price") %> triệu / tháng</strong></div>
                                 <div class="clearfix">
-                                    <div class="acreage"><span class="name">Diện tích:</span><span class="value">35m²</span></div>
-                                    <div class="address"><span class="name">Khu vực:</span><span class="value"><a href="https://phongtro123.com/tinh-thanh/ho-chi-minh/quan-7" title="Cho thuê Phòng trọ Quận 7, Hồ Chí Minh">Quận 7, Hồ Chí Minh</a></span></div>
-                                    <time class="timeago"><span class="name">Cập nhật:</span><span class="value">Hôm nay</span></time>
+                                    <div class="acreage"><span class="name">Diện tích:</span><span class="value"><%# Eval("Acreage") %> m²</span></div>
+                                    <div class="address">
+                                        <span class="name">Khu vực:</span>
+                                        <a class="value">
+                                            <%# Eval("HouseAddress") %>
+                                        </a>
+                                    </div>
+                                    <time class="timeago"><span class="name">Cập nhật:</span><span class="value"><%# Eval("PostedDate") %></span></time>
                                 </div>
                                 <p class="p_content" style="text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-word; overflow: hidden;">
-                                    PHÒNG xây mới 100%. Vị trí tọa lạc ngay ngã tư Lâm Văn Bền- Nguyễn Thị Thập Nội thất trong phòng gồm có:- Gác…
+                                    <%# Eval("Description") %>
                                 </p>
                             </div>
                         </div>
                     </ItemTemplate>
-                    <FooterTemplate>
-                    </FooterTemplate>
                 </asp:Repeater>
+
+                <div style="overflow: hidden;">
+                    <asp:Repeater ID="rptPages" runat="server"
+                        OnItemCommand="rptPages_ItemCommand">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="btnPage"
+                                Style="padding: 1px 3px; margin: 1px; background: #ccc; border: solid 1px #666; font: 8pt tahoma;"
+                                CommandName="Page" CommandArgument="<%# Container.DataItem %>"
+                                runat="server"><%# Container.DataItem %>
+                            </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
             </div>
-            <div class="ads" style="width: 200px;">
+            <%--<div class="ads" style="width: 200px;">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQZnBuV7XEqbsymeA-VLE4EzvngXSz-luLaVg&usqp=CAU" style="width: 100%;">
-            </div>
+            </div>--%>
         </div>
     </div>
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="True" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <script>
+        var search_city = document.getElementById("search_city");
+        var search_district = document.getElementById("search_district");
+        var search_line = document.getElementById("search_line");
+        search_city.addEventListener("change", function () {
+            $.ajax({
+                type: 'POST',
+                url: '/Views/GetAddress.aspx',
+                data: {},
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (r) { },
+                error: function (e) { }
+            });
+            //var xhttp = new XMLHttpRequest();
+            //xhttp.onreadystatechange = function () {
+            //    if (this.readyState == 4 && this.status == 200) {
+            //        var m = this.responseText;
+            //        console.log(m);
+            //        //BindDistrictSelect(this.responseText);
+            //    }
+            //};
+            ////xhttp.open("GET", "/Views/GetAddress?cityId=" + this.value + "", true);
+            ////xhttp.open("GET", "/Views/TestAjax?cityId=" + this.value + "", true);
+            //xhttp.open("GET", "/Views/TestAjax");
+            //xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            //xhttp.send();
+        });
+        function BindDistrictSelect(data) {
+            search_district.innerHTML = "";
+            search_line.innerHTML = "";
+            var dataJson = JSON.parse(data);
+            console.log(dataJson);
+            for (var i = 0; i < dataJson.length; i++) {
+                search_district.appendChild(new Option(dataJson[i].Name, dataJson[i].Id));
+            }
+        }
+    </script>
 </asp:Content>
