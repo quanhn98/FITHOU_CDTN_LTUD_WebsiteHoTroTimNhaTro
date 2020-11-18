@@ -1,16 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Error.aspx.cs" Inherits="WebForm.Views.Public.Error" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Error.aspx.cs" Inherits="WebForm.Views.Public.Error" MasterPageFile="~/Site.Master"%>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            Đã có lỗi xảy ra
-        </div>
-    </form>
-</body>
-</html>
+<asp:Content ContentPlaceHolderID="Header" runat="server">
+    <title>Lỗi</title>
+</asp:Content>
+<asp:Content ContentPlaceHolderID="MainContent" runat="server">
+    <div id="mesageShow" runat="server">
+        Đã có lỗi xảy ra
+    </div>
+</asp:Content>

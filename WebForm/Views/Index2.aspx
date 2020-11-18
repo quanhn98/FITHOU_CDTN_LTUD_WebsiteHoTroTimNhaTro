@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Index2.aspx.cs" Inherits="WebForm.Views.Index2" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Index2.aspx.cs" Inherits="WebForm.Views.Index2" EnableEventValidation="false" %>
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" runat="server">
     <title>Trang chủ</title>
@@ -25,7 +25,7 @@
             float: left;
             margin-left: 5px;
             margin-bottom: 0;
-            width: 160px;
+            min-width: 169px;
         }
 
             .main-content .search_field_item.search_field_item_submit {
@@ -114,61 +114,83 @@
     <div class="container" style="min-height: 1000px; background-color: white;">
         <div class="form-Filter">
             <div class="search_field">
-                <div class="clearfix">
+                <div class="" style="display: flex;">
                     <div class="search_field_item search_field_item_tinhthanh">
                         <label class="search_field_item_label">Tỉnh thành</label>
                         <%--<select id="search_city" runat="server" class="form-control" name="" tabindex="-1" aria-hidden="true">
                         </select>--%>
-                        <asp:DropDownList ID="search_city" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:DropDownList>
+                        <asp:DropDownList ID="search_city" runat="server" CssClass="form-control" ClientIDMode="Static">
+                            <asp:ListItem Text="---Thành phố---" Value=""></asp:ListItem>
+                        </asp:DropDownList>
                     </div>
                     <div class="search_field_item search_field_item_quanhuyen">
                         <label class="search_field_item_label">Quận huyện</label>
                         <%--<select id="search_district" runat="server" class="form-control" name="" data-current="" tabindex="-1" aria-hidden="true">
                         </select>--%>
-                        <asp:DropDownList ID="search_district" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:DropDownList>
+                        <asp:DropDownList ID="search_district" runat="server" CssClass="form-control" ClientIDMode="Static">
+                            <asp:ListItem Text="---Quận huyện---" Value=""></asp:ListItem>
+                        </asp:DropDownList>
                     </div>
                     <div class="search_field_item search_field_item_duongpho">
                         <label class="search_field_item_label">Đường phố</label>
                         <%--<select name="search_line" class="form-control" data-current="" tabindex="-1" aria-hidden="true">
                         </select>--%>
-                        <asp:DropDownList ID="search_line" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:DropDownList>
+                        <asp:DropDownList ID="search_line" runat="server" CssClass="form-control" ClientIDMode="Static">
+                            <asp:ListItem Text="---Đường phố---" Value=""></asp:ListItem>
+                        </asp:DropDownList>
                     </div>
                     <div class="search_field_item search_field_item_mucgia">
                         <label class="search_field_item_label">Khoảng giá</label>
-                        <select class="form-control price js_select2_price select2-hidden-accessible" name="gia" tabindex="-1" aria-hidden="true">
-                            <option value="0" selected="">Chọn mức giá</option>
-                            <option value="1">Dưới 1 triệu</option>
-                            <option value="2">1 triệu - 2 triệu</option>
-                            <option value="3">2 triệu - 3 triệu</option>
-                            <option value="4">3 triệu - 4 triệu</option>
-                        </select>
+                        <asp:DropDownList ID="search_price" runat="server" CssClass="form-control" ClientIDMode="Static">
+                            <asp:ListItem Text="Chọn mức giá" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Dưới 1 triệu" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="1 triệu - 2 triệu" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="2 triệu - 3 triệu" Value="3"></asp:ListItem>
+                            <asp:ListItem Text="3 triệu - 4 triệu" Value="4"></asp:ListItem>
+                        </asp:DropDownList>
                     </div>
                     <div class="search_field_item search_field_item_dientich">
                         <label class="search_field_item_label">Diện tích</label>
-                        <select id="search_dientich" name="dt" class="form-control js_select2_acreage select2-hidden-accessible" tabindex="-1" aria-hidden="true">
-                            <option value="0" selected="">Chọn diện tích</option>
-                            <option value="1">Dưới 20 m2</option>
-                            <option value="2">20 m2 - 30 m2</option>
-                            <option value="3">30 m2 - 40 m2</option>
-                        </select>
+                        <asp:DropDownList ID="search_acr" runat="server" CssClass="form-control" ClientIDMode="Static">
+                            <asp:ListItem Text="Chọn diện tích" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Dưới 20 m2" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="20 m2 - 30 m2" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="30 m2 - 40 m2" Value="3"></asp:ListItem>
+                        </asp:DropDownList>
                     </div>
-                    <div class="search_field_item search_field_item_submit">
-                        <label class="search_field_item_label">&nbsp;</label>
-                        <button type="submit" class="btn btn-default btn_search_box">Lọc tin </button>
+                    <div class="" style="margin-left:5px">
+                        <label class="search_field_item_label">&nbsp;</label>                        
+                        <button id="btn-ClearFilter" type="button" class="btn btn-default btn_search_box" style="background:white;color:#000">
+                           <i class="fa fa-eraser" aria-hidden="true"></i>
+                        </button>
                     </div>
                 </div>
+                <div style="display: flex; flex-direction: inherit; margin-top: 10px;">
+                    <input id="iptFilterText" runat="server" type="text" placeholder="Nhập tìm kiếm" class="form-control" style="margin-right:5px"/>
+                    <div class="" style="">
+                        <button id="btnFind" type="button" class="btn btn-default btn_search_box">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            Lọc tin 
+                        </button>
+                    </div>
+                </div>
+                <asp:Button ID="submitFind" OnClick="submitFind_Click" ClientIDMode="Static" runat="server" CssClass="hidden"/>
             </div>
         </div>
         <div style="display: flex; padding: 20px;">
             <div class="content" style="flex-grow: 1;">
-                <asp:Repeater ID="Repeater1" runat="server">
-                    <ItemTemplate>
+                <asp:ScriptManager ID="MainScriptManager" runat="server" />
+        <asp:UpdatePanel ID="pnlHelloWorld" runat="server">
+            <ContentTemplate>
+                <div>
+                    <asp:Repeater ID="rptResult" runat="server">
+                       <ItemTemplate>
                         <div id="" class="post" style="background-color: #fbf7ef; display: flex; height: 170px; overflow: hidden; padding: 10px; margin-bottom: 3px;">
                             <a>
                                 <div class="post-thumb" data-background-image="<%# Eval("Thumbnail") %>"
                                     style="position: relative; display: block; background-position: center center; background-image: url('<%# Eval("Thumbnail") %>'); background-size: cover; background-repeat: no-repeat; width: 150px; height: 150px;"
                                     data-loaded="true">
-                                    <div class="image_number" style="position: absolute; bottom: 0px; right: 0px;"><span>6 ảnh</span></div>
+                                    <div class="image_number" style="position: absolute; bottom: 0px; right: 0px;"><%--<span>6 ảnh</span>--%></div>
                                 </div>
                             </a>
                             <div class="post-info" style="padding-left: 10px; overflow: hidden">
@@ -195,64 +217,137 @@
                             </div>
                         </div>
                     </ItemTemplate>
-                </asp:Repeater>
-
-                <div style="overflow: hidden;">
-                    <asp:Repeater ID="rptPages" runat="server"
-                        OnItemCommand="rptPages_ItemCommand">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="btnPage"
-                                Style="padding: 1px 3px; margin: 1px; background: #ccc; border: solid 1px #666; font: 8pt tahoma;"
-                                CommandName="Page" CommandArgument="<%# Container.DataItem %>"
-                                runat="server"><%# Container.DataItem %>
-                            </asp:LinkButton>
-                        </ItemTemplate>
                     </asp:Repeater>
                 </div>
+
+                <div style="margin-top: 20px;">
+                    <table style="width: 600px;margin-right:auto;margin-left:auto">
+                        <tr>
+                            <td>
+                                <asp:LinkButton ID="lbFirst" runat="server" 
+
+				OnClick="lbFirst_Click">Đầu</asp:LinkButton>
+                            </td>
+                            <td>
+                                <asp:LinkButton ID="lbPrevious" runat="server" 
+
+				OnClick="lbPrevious_Click">Trước</asp:LinkButton>
+                            </td>
+                            <td>
+                                <asp:DataList ID="rptPaging" runat="server"
+
+                                    OnItemCommand="rptPaging_ItemCommand"
+
+                                    OnItemDataBound="rptPaging_ItemDataBound" 
+
+					RepeatDirection="Horizontal">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="lbPaging" runat="server"
+
+                                            CommandArgument='<%# Eval("PageIndex") %>' 
+
+						CommandName="newPage"
+
+                                            Text='<%# Eval("PageText") %> ' Width="20px">
+						</asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:DataList>
+                            </td>
+                            <td>
+                                <asp:LinkButton ID="lbNext" runat="server" 
+
+				OnClick="lbNext_Click">Sau</asp:LinkButton>
+                            </td>
+                            <td>
+                                <asp:LinkButton ID="lbLast" runat="server" 
+
+				OnClick="lbLast_Click">Cuối cùng</asp:LinkButton>
+                            </td>
+                            <td>
+                                <asp:Label ID="lblpage" runat="server" Text=""></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
             </div>
-            <%--<div class="ads" style="width: 200px;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQZnBuV7XEqbsymeA-VLE4EzvngXSz-luLaVg&usqp=CAU" style="width: 100%;">
-            </div>--%>
         </div>
     </div>
-    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="True" />
-    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
     <script>
         var search_city = document.getElementById("search_city");
         var search_district = document.getElementById("search_district");
         var search_line = document.getElementById("search_line");
+        var search_price = document.getElementById("search_price");
+        var search_acr = document.getElementById("search_acr");
+        var btnFind = document.getElementById("btnFind");
+        var submitFind = document.getElementById("submitFind");
+        var btnClearFilter = document.getElementById("btn-ClearFilter");
         search_city.addEventListener("change", function () {
-            $.ajax({
-                type: 'POST',
-                url: '/Views/GetAddress.aspx',
-                data: {},
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                success: function (r) { },
-                error: function (e) { }
-            });
-            //var xhttp = new XMLHttpRequest();
-            //xhttp.onreadystatechange = function () {
-            //    if (this.readyState == 4 && this.status == 200) {
-            //        var m = this.responseText;
-            //        console.log(m);
-            //        //BindDistrictSelect(this.responseText);
-            //    }
-            //};
-            ////xhttp.open("GET", "/Views/GetAddress?cityId=" + this.value + "", true);
-            ////xhttp.open("GET", "/Views/TestAjax?cityId=" + this.value + "", true);
-            //xhttp.open("GET", "/Views/TestAjax");
-            //xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            //xhttp.send();
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var m = this.responseText;
+                    console.log(m);
+                    BindDistrictSelect(this.responseText);
+                }
+            };
+            var params = JSON.stringify({ cityId: this.value });
+            xhttp.open("POST", "/Views/TestAjax.aspx/GetDistrict");
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhttp.send(params);
         });
         function BindDistrictSelect(data) {
             search_district.innerHTML = "";
             search_line.innerHTML = "";
+            search_line.appendChild(new Option("---Đường phố---", ""));
             var dataJson = JSON.parse(data);
-            console.log(dataJson);
+            dataJson = JSON.parse(dataJson.d);
+            search_district.appendChild(new Option("---Quận huyện---", ""));
             for (var i = 0; i < dataJson.length; i++) {
                 search_district.appendChild(new Option(dataJson[i].Name, dataJson[i].Id));
             }
         }
+        search_district.addEventListener("change", function () {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var m = this.responseText;
+                    console.log(m);
+                    BindLineSelect(this.responseText);
+                }
+            };
+            var params = JSON.stringify({ districtId: this.value });
+            xhttp.open("POST", "/Views/TestAjax.aspx/GetLine");
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhttp.send(params);
+        });
+        function BindLineSelect(data) {
+            search_line.innerHTML = "";
+            var dataJson = JSON.parse(data);
+            dataJson = JSON.parse(dataJson.d);
+            search_line.appendChild(new Option("---Đường phố---", ""));
+            for (var i = 0; i < dataJson.length; i++) {
+                search_line.appendChild(new Option(dataJson[i].Name, dataJson[i].Id));
+            }
+        }
+        btnFind.addEventListener("click", function () {
+            submitFind.click();
+        });
+        btnClearFilter.addEventListener("click", function () {
+            search_city.value = "";
+            search_district.innerHTML = "";
+            search_district.appendChild(new Option("---Quận huyện---", ""));
+            search_district.value = "";
+            search_line.innerHTML = "";
+            search_line.appendChild(new Option("---Đường phố---", ""));
+            search_line.value = "";
+
+            search_price.value = 0;
+            search_acr.value = 0;
+            var filterText = document.getElementById("MainContent_iptFilterText");
+            filterText.value = "";
+        });
     </script>
 </asp:Content>

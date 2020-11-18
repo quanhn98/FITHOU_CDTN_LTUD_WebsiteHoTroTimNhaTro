@@ -144,6 +144,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Ajax\Test.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Note.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -175,6 +176,8 @@
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Views\Address.aspx" />
+    <Content Include="Views\Admin.aspx" />
+    <Content Include="Views\ChangePassword.aspx" />
     <Content Include="Views\DetailPost.aspx" />
     <Content Include="Views\EditPost.aspx" />
     <Content Include="Views\Error.aspx" />
@@ -185,7 +188,9 @@
     <Content Include="Views\Profile.aspx" />
     <Content Include="Views\SignIn.aspx" />
     <Content Include="Views\SignUp.aspx" />
+    <Content Include="Views\Test.aspx" />
     <Content Include="Views\TestAjax.aspx" />
+    <Content Include="Views\UpdateProfile.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -204,6 +209,9 @@
     <Compile Include="Models\EnumFilterAcreage.cs" />
     <Compile Include="Models\EnumFilterPrice.cs" />
     <Compile Include="Models\MediaInfo.cs" />
+    <Compile Include="Models\PostCoordinate.cs" />
+    <Compile Include="Models\PostStatis.cs" />
+    <Compile Include="Models\UserStatis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -245,6 +253,20 @@
     </Compile>
     <Compile Include="Views\Address.aspx.designer.cs">
       <DependentUpon>Address.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\DetailPost.aspx.cs">
       <DependentUpon>DetailPost.aspx</DependentUpon>
@@ -316,12 +338,26 @@
     <Compile Include="Views\SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\TestAjax.aspx.cs">
       <DependentUpon>TestAjax.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\TestAjax.aspx.designer.cs">
       <DependentUpon>TestAjax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UpdateProfile.aspx.cs">
+      <DependentUpon>UpdateProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\UpdateProfile.aspx.designer.cs">
+      <DependentUpon>UpdateProfile.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

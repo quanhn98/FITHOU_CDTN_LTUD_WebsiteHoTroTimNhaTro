@@ -1,0 +1,21 @@
+﻿Regex phổ biến
+
+Tối thiểu tám ký tự, ít nhất một chữ cái và một số:
+
+"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+
+Tối thiểu tám ký tự, ít nhất một chữ cái, một số và một ký tự đặc biệt:
+
+"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+
+Tối thiểu tám ký tự, ít nhất một ký tự hoa, một ký tự viết thường và một số:
+
+"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+
+Tối thiểu tám ký tự, ít nhất một ký tự hoa, một ký tự viết thường, một số và một ký tự đặc biệt:
+
+"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+
+Tối thiểu tám và tối đa 10 ký tự, ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt:
+
+"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$"

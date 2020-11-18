@@ -5,20 +5,20 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        #btnDelete,#btnClose,#btnEdit,#btnOpen{
-            float:right;
-            margin-top:15px;
+        #btnDelete, #btnClose, #btnEdit, #btnOpen {
+            float: right;
         }
     </style>
-    <div style="height: 50px; padding: 0px 10px;">
-        <a class="btn" style="margin-top: 20px;" href="Index2.aspx">
+    <div style="height: 50px; padding: 10px 10px;">
+        <a class="btn" style="" href="Index2.aspx">
             <i class="fa fa-home" aria-hidden="true"></i>
             Về trang chủ
         </a>
-        <asp:Button ID="btnDelete" CssClass="btn" OnClick="btnDelete_Click" runat="server" Visible="false" Text="Xóa bài viết" BorderColor="DarkRed" ClientIDMode="Static" OnClientClick="btnDelete_Check"/>
-        <asp:Button ID="btnClose" CssClass="btn" OnClick="btnClose_Click" runat="server" Visible="false" Text="Đóng bài viết" ClientIDMode="Static" OnClientClick="btnClose_Check"/>
-        <asp:Button ID="btnEdit" CssClass="btn" OnClick="btnEdit_Click" runat="server" Visible="false" Text="Sửa bài viết" ClientIDMode="Static" OnClientClick="btnEdit_Check"/>
-        <asp:Button ID="btnOpen" CssClass="btn" OnClick="btnOpen_Click" runat="server" Visible="false" Text="Mở bài viết" ClientIDMode="Static" OnClientClick="btnOpen_Check"/>
+        <button type="button" class="btn" id="btnDeleteC" runat="server" style="float: right">Xóa bài</button>
+        <asp:Button ID="btnDelete" CssClass="btn hidden" OnClick="btnDelete_Click" runat="server" Visible="true" Text="Xóa bài viết" BorderColor="DarkRed" ClientIDMode="Static" OnClientClick="btnDelete_Check" />
+        <asp:Button ID="btnClose" CssClass="btn " OnClick="btnClose_Click" runat="server" Visible="false" Text="Đóng bài viết" ClientIDMode="Static" OnClientClick="btnClose_Check" />
+        <asp:Button ID="btnEdit" CssClass="btn " OnClick="btnEdit_Click" runat="server" Visible="false"  Text="Sửa bài viết" ClientIDMode="Static" OnClientClick="btnEdit_Check" />
+        <asp:Button ID="btnOpen" CssClass="btn " OnClick="btnOpen_Click" runat="server" Visible="false" Text="Mở bài viết" ClientIDMode="Static" OnClientClick="btnOpen_Check" />
     </div>
     <div style="display: flex;">
         <div style="flex-grow: 1; max-width: 75%;">
@@ -46,6 +46,7 @@
             <div style="margin: 10px">
                 <h3 id="postTitle" runat="server"></h3>
                 <h5 id="time" runat="server" style="font-style: oblique;"></h5>
+                <span id="countView" runat="server"></span>lượt xem
                 <h4 id="price" runat="server"></h4>
                 <div>
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -78,16 +79,16 @@
                     </fieldset>
                 </div>
                 <div>
-                    <asp:TextBox ID="coordinatesX" runat="server" CssClass="hidden" ClientIDMode="Static"/>
-                    <asp:TextBox ID="PostId" runat="server" CssClass="hidden" ClientIDMode="Static"/>
-                    <asp:TextBox ID="coordinatesY" runat="server" CssClass="hidden" ClientIDMode="Static"/>
-                    <div id="map" style="height:300px;margin-top:20px"></div>
+                    <asp:TextBox ID="coordinatesX" runat="server" CssClass="hidden" ClientIDMode="Static" />
+                    <asp:TextBox ID="PostId" runat="server" CssClass="hidden" ClientIDMode="Static" />
+                    <asp:TextBox ID="coordinatesY" runat="server" CssClass="hidden" ClientIDMode="Static" />
+                    <div id="map" style="height: 300px; margin-top: 20px"></div>
                 </div>
             </div>
         </div>
         <div id="userInfo" style="padding: 10px; max-width: 40%">
             <div class="" itemprop="seller" itemscope="" style="border-bottom: 1px solid #e5e5e5; margin-bottom: 10px; padding: 10px 0; border-top: 1px solid #e5e5e5;">
-                <a class="" style="display: flex; color: #333; padding: 0;">
+                <a id="viewProfile" runat="server" class="" style="display: flex; color: #333; padding: 0;">
                     <div class="" style="height: 50px; width: 50px; display: inline-block; border: 2px solid #e5e5e5; padding: 0; vertical-align: middle; background: url('/Content/Images/no-image.jpg') no-repeat; background-size: contain; background-color: #fff; border-radius: 50%;">
                         <img alt="" src="/Content/Images/no-image.jpg" class="" style="border-radius: 50%; height: 50px; width: 50px; border: 2px solid #e5e5e5; margin: -2px;">
                     </div>
@@ -96,14 +97,13 @@
                             <div class="" style="margin: 5px 5px 3px 0; font-size: 13px; flex: 1; line-height: 18px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;">
                                 <b style="margin-right: 5px;" id="createdUser" runat="server"></b>
                             </div>
-                            <button type="button" class="" style="cursor: pointer; text-align: center; transition: background-color .2s ease-in-out; font-size: 10px; width: max-content; border-radius: 20px; padding: 7px 10px; height: fit-content; background-color: #fff; border: 1px solid;">
-                                Xem thông tin</button>
+                            <button class="" style="cursor: pointer; text-align: center; transition: background-color .2s ease-in-out; font-size: 10px; width: max-content; border-radius: 20px; padding: 7px 10px; height: fit-content; background-color: #fff; border: 1px solid;">Xem thông tin</button>
                         </div>
                         <div class="" style="font-size: 11px; color: #9b9b9b; display: flex; align-items: center;">
                             <div class="" style="font-size: 30px; color: #589f39; line-height: 21px; margin-right: 5px; color: #9b9b9b;">
                                 •
                             </div>
-                            Tham gia 1 tháng trước
+                            <%--                            Tham gia 1 tháng trước--%>
                         </div>
                     </div>
                 </a>
@@ -111,31 +111,31 @@
                     <div class="inforItem___1f6kc">
                         <div class="inforText___1ELFe">
                             <p class="">Số tin đăng</p>
-                            <span class="inforValue___1Smdc">10
+                            <span class="" id="totalPost" runat="server"></span>
                         </div>
                     </div>
                     <div class="seperateLine___2_kjr"></div>
                     <a href="" target="blank">
-                        <div class="inforItem___1f6kc">
+                        <%--<div class="inforItem___1f6kc">
                             <div class="inforText___1ELFe">
                                 <p class="rateText___4d2Qr">Đánh giá</p>
                                 <span class="inforValue___1Smdc">---</span>
                             </div>
-                        </div>
+                        </div>--%>
                     </a>
                     <div class="seperateLine___2_kjr"></div>
                     <div class="inforItem___1f6kc">
-                        <div class="inforText___1ELFe">
+                        <%--<div class="inforText___1ELFe">
                             <p class="">Hoạt động</p>
                             <span class="inforValue___1Smdc">Thỉnh thoảng</span>
-                        </div>
+                        </div>--%>
                     </div>
                 </div>
             </div>
             <div>
                 <div style="display: block; margin-bottom: 0px; text-align: center; vertical-align: middle; touch-action: manipulation; cursor: pointer; background-image: none; border: 1px solid transparent; white-space: nowrap; padding: 8px 10px; line-height: 1.42857; border-radius: 4px; user-select: none; font-size: 13px; transition: background-color 200ms ease-in-out 0s; color: rgb(255, 255, 255); background-color: rgb(51, 168, 55);">
                     <div style="display: flex; -webkit-box-pack: justify; justify-content: space-between; -webkit-box-align: center; align-items: center;">
-                        Liên hệ
+                        Liên hệ <span id="phoneNumber" runat="server"></span>
                     </div>
                 </div>
             </div>
@@ -179,6 +179,14 @@
         var map = document.getElementById("map");
         var coordinatesX = document.getElementById("coordinatesX");
         var coordinatesY = document.getElementById("coordinatesY");
+        var MainContent_btnDeleteC = document.getElementById("MainContent_btnDeleteC");
+        var btnDelete = document.getElementById("btnDelete");
+        MainContent_btnDeleteC.addEventListener("click", function () {
+            var r = confirm("Chắc chắn xóa!");
+            if (r == true) {
+                btnDelete.click();
+            }
+        });
         var swiper = new Swiper('#media', {
             pagination: {
                 el: '.swiper-pagination',
@@ -191,19 +199,22 @@
         });
         InitMap();
         function InitMap() {
-            console.log(coordinatesX.value);
+            console.log();
             console.log(coordinatesY.value);
             var mapOptions = {
-                center: new google.maps.LatLng(coordinatesX.value, coordinatesY.value),
+                center: new google.maps.LatLng(21.0278, 105.8342),
                 zoom: 15,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var mapD = new google.maps.Map(map, mapOptions);
-            var markerDefault = new google.maps.Marker({
-                position: new google.maps.LatLng(coordinatesX.value, coordinatesY.value),
-                map: mapD,
-                title: "Drag me!"
-            });
+            if (coordinatesX.value != null && coordinatesY.value != null) {
+                console.log("abc");
+                var markerDefault = new google.maps.Marker({
+                    position: new google.maps.LatLng(coordinatesX.value, coordinatesY.value),
+                    map: mapD,
+                    title: "Drag me!"
+                });
+            }
         }
         function btnDelete_Check() {
             var ck = confirm("Chắc chắn xóa");

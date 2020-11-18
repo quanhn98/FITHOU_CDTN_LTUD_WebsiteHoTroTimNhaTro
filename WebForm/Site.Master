@@ -32,7 +32,7 @@
                     </div>
                     <div class="hover appWrapper-Header-navItem hideIP5" id="btnSignOutContainer" runat="server">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
-                        <asp:Button ID="btSignOut" runat="server" Text="Đăng xuất"  OnClick="btSignOut_Click" />
+                        <asp:Button ID="btSignOut" runat="server" Text="Đăng xuất"  OnClick="btSignOut_Click" CssClass="btn"/>
                     </div>
                     <div class="hover appWrapper-Header-navItem hideIP5" id="hlProfileContainer" runat="server">
                         <i class="fa fa-user-circle-o" aria-hidden="true"></i>

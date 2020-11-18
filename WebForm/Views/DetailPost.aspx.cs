@@ -52,6 +52,8 @@ namespace WebForm.Views.Public
                     {
                         DetailTitle.InnerText = post.Title;
                         SetData(post);
+                        post.CountView++;
+                        var update = PostManager.Update(post);
                     }
                 }
             }
@@ -64,7 +66,8 @@ namespace WebForm.Views.Public
             if (Session["UserId"]!=null && post.UserId.Equals(int.Parse(Session["UserId"].ToString())))
             {
                 btnClose.Visible = true;
-                btnDelete.Visible = true;
+                //btnDelete.Visible = true;
+                btnDeleteC.Visible = true;
                 btnEdit.Visible = true;
                 btnOpen.Visible = true;
                 if (post.Closed)
@@ -76,6 +79,21 @@ namespace WebForm.Views.Public
                 {
                     btnOpen.Visible = false;
                 }
+            }else if (Session["UserId"] != null)
+            {
+                var checkAdmin = UserManager.GetUsers().FirstOrDefault(a => a.Id == int.Parse(Session["UserId"].ToString()));
+                if (checkAdmin!=null && (checkAdmin.IsAdmin??false))
+                {
+                    btnDeleteC.Visible = true;
+                }
+            }
+            else
+            {
+                btnClose.Visible = false;
+                //btnDelete.Visible = false;
+                btnDeleteC.Visible = false;
+                btnEdit.Visible = false;
+                btnOpen.Visible = false;
             }
             postTitle.InnerText = post.Title;
             price.InnerText = post.Price + " triệu/tháng";
@@ -90,6 +108,10 @@ namespace WebForm.Views.Public
             time.InnerText = post.PostedDate.ToString();
             coordinatesX.Text = post.CoordinatesX;
             coordinatesY.Text = post.CoordinatesY;
+            countView.InnerText = post.CountView.ToString();
+            totalPost.InnerText = user.TotalPost.ToString();
+            viewProfile.HRef = "Profile?id=" + post.UserId;
+            phoneNumber.InnerText = post.PhoneNumber;
             PostId.Text = post.Id.ToString();
             if (post.Closed)
             {

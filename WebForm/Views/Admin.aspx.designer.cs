@@ -7,20 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebForm.Views.Public
+namespace WebForm.Views
 {
 
 
-    public partial class Error
+    public partial class Admin
     {
 
         /// <summary>
-        /// mesageShow control.
+        /// lvUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mesageShow;
+        protected global::System.Web.UI.WebControls.ListView lvUser;
+
+        /// <summary>
+        /// lvPost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvPost;
     }
 }

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebForm.Views.Public
+namespace WebForm.Views
 {
 
 
-    public partial class SignUp
+    public partial class UpdateProfile
     {
 
         /// <summary>
@@ -22,24 +22,6 @@ namespace WebForm.Views.Public
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl notice;
-
-        /// <summary>
-        /// tbUserName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbUserName;
-
-        /// <summary>
-        /// tbPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbPassword;
 
         /// <summary>
         /// tbFullName control.
@@ -60,12 +42,12 @@ namespace WebForm.Views.Public
         protected global::System.Web.UI.WebControls.TextBox tbPhoneNumber;
 
         /// <summary>
-        /// btSignUp control.
+        /// btnUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btSignUp;
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
     }
 }

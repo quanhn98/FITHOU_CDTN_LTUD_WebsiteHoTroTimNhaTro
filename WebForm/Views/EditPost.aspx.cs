@@ -46,6 +46,7 @@ namespace WebForm.Views.Public
             if (!IsPostBack)
             {
                 CheckUserLogon();
+                RenderFilter();
                 var postId = Request.QueryString["Id"];
                 if (postId != null)
                 {
@@ -58,6 +59,21 @@ namespace WebForm.Views.Public
                     }
                 }
             }
+        }
+        public void RenderFilter()
+        {
+            var cities = CityManager.GetCities();
+            dlCityId.DataTextField = "Name";
+            dlCityId.DataValueField = "Id";
+            dlCityId.DataSource = cities;
+            dlCityId.DataBind();
+            dlCityId.Items.Insert(0, new ListItem("---Thành phố---", ""));
+
+            dlDistrictId.DataTextField = "Name";
+            dlDistrictId.DataValueField = "Id";
+
+            dlLineId.DataTextField = "Name";
+            dlLineId.DataValueField = "Id";
         }
         public void SetData(Post post)
         {
@@ -73,6 +89,27 @@ namespace WebForm.Views.Public
             tbAddress.Text = post.HouseAddress;
             tbCoordinatesX.Text = post.CoordinatesX;
             tbCoordinatesY.Text = post.CoordinatesY;
+            tbPhoneNumber.Text = post.PhoneNumber;
+            tbPrice.Text = post.Price.ToString();
+            if (post.CityId != null)
+            {
+                dlCityId.SelectedValue = post.CityId.Value.ToString();
+                var dis = DistrictManager.GetDistricts().Where(a => a.CityId == post.CityId)
+                    ;
+                dlDistrictId.DataSource = dis;
+                dlDistrictId.DataBind();
+            }
+            if (post.DistrictId != null)
+            {
+                dlDistrictId.SelectedValue = post.DistrictId.Value.ToString();
+                var lines = LineManager.GetLines().Where(a => a.DistrictId == post.DistrictId);
+                dlLineId.DataSource = lines;
+                dlLineId.DataBind();
+            }
+            if (post.LineId != null)
+            {
+                dlLineId.SelectedValue = post.CityId.Value.ToString();
+            }
         }
         public void UpdatePost()
         {
@@ -93,6 +130,18 @@ namespace WebForm.Views.Public
             if (dlCityId.SelectedValue != null && dlCityId.SelectedValue.Length > 0) post.CityId = int.Parse(dlCityId.SelectedValue);
             if (!string.IsNullOrEmpty(tbCoordinatesX.Text)) post.CoordinatesX = tbCoordinatesX.Text;
             if (!string.IsNullOrEmpty(tbCoordinatesY.Text)) post.CoordinatesY = tbCoordinatesY.Text;
+            if (dlCityId.SelectedItem != null && !string.IsNullOrEmpty(dlCityId.SelectedValue))
+            {
+                post.CityId = int.Parse(dlCityId.SelectedValue);
+            }
+            if (dlDistrictId.SelectedItem != null && !string.IsNullOrEmpty(dlDistrictId.SelectedValue))
+            {
+                post.DistrictId = int.Parse(dlDistrictId.SelectedValue);
+            }
+            if (dlLineId.SelectedItem != null && !string.IsNullOrEmpty(dlLineId.SelectedValue))
+            {
+                post.LineId = int.Parse(dlLineId.SelectedValue);
+            }
             if (ImagePaths.Length > 0)
             {
                 post.ImagePaths = ImagePaths;

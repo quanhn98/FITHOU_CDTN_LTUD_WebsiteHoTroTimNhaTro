@@ -12,7 +12,10 @@ namespace WebForm.SqlServer
 
         public List<District> GetDistricts()
         {
-            return appContext.District.ToList();
+            var rs = appContext.District
+                .ToList()
+                ;
+            return rs;
         }
     }
 }

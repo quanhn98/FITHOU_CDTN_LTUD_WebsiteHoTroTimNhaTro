@@ -45,7 +45,7 @@ namespace WebForm.Views
                     Password = tbPassword.Text
                 };
                 var addRs = UserManager.SignIn(user);
-                if (addRs!=null)
+                if (addRs.Succeeded)
                 {
                     Session["UserName"] = user.UserName;
                     Session["UserId"] = user.Id;

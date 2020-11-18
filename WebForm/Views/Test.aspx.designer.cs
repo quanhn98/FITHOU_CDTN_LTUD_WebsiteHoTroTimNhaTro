@@ -7,101 +7,101 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebForm.Views.Public
+namespace WebForm.Views
 {
 
 
-    public partial class Profile
+    public partial class Test
     {
 
         /// <summary>
-        /// fullName control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fullName;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// userName control.
+        /// MainScriptManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userName;
+        protected global::System.Web.UI.ScriptManager MainScriptManager;
 
         /// <summary>
-        /// totalPost control.
+        /// pnlHelloWorld control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl totalPost;
+        protected global::System.Web.UI.UpdatePanel pnlHelloWorld;
 
         /// <summary>
-        /// regDate control.
+        /// rptResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl regDate;
+        protected global::System.Web.UI.WebControls.Repeater rptResult;
 
         /// <summary>
-        /// phoneNumber control.
+        /// lbFirst control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl phoneNumber;
+        protected global::System.Web.UI.WebControls.LinkButton lbFirst;
 
         /// <summary>
-        /// settingContainer control.
+        /// lbPrevious control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl settingContainer;
+        protected global::System.Web.UI.WebControls.LinkButton lbPrevious;
 
         /// <summary>
-        /// updateProfile control.
+        /// rptPaging control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor updateProfile;
+        protected global::System.Web.UI.WebControls.DataList rptPaging;
 
         /// <summary>
-        /// changePass control.
+        /// lbNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor changePass;
+        protected global::System.Web.UI.WebControls.LinkButton lbNext;
 
         /// <summary>
-        /// Repeater1 control.
+        /// lbLast control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        protected global::System.Web.UI.WebControls.LinkButton lbLast;
 
         /// <summary>
-        /// Repeater2 control.
+        /// lblpage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater2;
+        protected global::System.Web.UI.WebControls.Label lblpage;
     }
 }

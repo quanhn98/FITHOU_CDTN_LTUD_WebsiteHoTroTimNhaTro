@@ -10,9 +10,9 @@ namespace WebForm.SqlServer
     {
         AppContext appContext = new AppContext();
 
-        public List<Province> GetProvinces()
-        {
-            return appContext.Province.ToList();
-        }
+        //public List<Province> GetProvinces()
+        //{
+        //    return appContext.Province.ToList();
+        //}
     }
 }

@@ -29,6 +29,8 @@ namespace WebForm.SqlServer
 
         public bool? IsAdmin { get; set; }
         public string PhoneNumber { get; set; }
+        public int TotalPost { get; set; }
+        public string FullName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Post { get; set; }

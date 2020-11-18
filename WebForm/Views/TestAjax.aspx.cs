@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.SqlServer;
@@ -12,35 +13,34 @@ namespace WebForm.Views.Public
     public partial class TestAjax : System.Web.UI.Page
     {
         CityManager CityManager = new CityManager();
-        DistrictManager DistrictManager = new DistrictManager();
-        LineManager LineManager = new LineManager();
+        static DistrictManager DistrictManager = new DistrictManager();
+        static LineManager LineManager = new LineManager();
         protected void Page_Load(object sender, EventArgs e)
         {
-            var cityId = Request["CityId"];
-            var districtId = Request["DistrictId"];
-            if (cityId != null)
+            
+        }
+
+        [WebMethod]
+        public static string GetDistrict(int cityId)
+        {
+            var districts = DistrictManager.GetDistricts().Where(a => a.CityId == cityId).Select(a => new District()
             {
-                var districts = DistrictManager.GetDistricts().Where(a => a.CityId == int.Parse(cityId))
-                    .Select(a => new District() { Id = a.Id, CityId = a.CityId, Name = a.Name })
-                    .ToList()
-                    ;
-                Response.ContentType = "application/json";
-                Response.Write(JsonConvert.SerializeObject(districts));
-            }
-            else if (districtId != null)
+                Id = a.Id,
+                CityId = a.CityId,
+                Name = a.Name
+            });
+            return JsonConvert.SerializeObject(districts);
+        }
+        [WebMethod]
+        public static string GetLine(int districtId)
+        {
+            var lines = LineManager.GetLines().Where(a => a.DistrictId == districtId).Select(a => new Line()
             {
-                var lines = LineManager.GetLines().Where(a => a.DistrictId == int.Parse(districtId))
-                    .Select(a => new Line() { Id = a.Id, DistrictId = a.DistrictId, Name = a.Name })
-                    .ToList()
-                    ;
-                Response.ContentType = "application/json";
-                Response.Write(JsonConvert.SerializeObject(lines));
-            }
-            else
-            {
-                Response.ContentType = "application/json";
-                Response.Write("OK");
-            }
+                Id = a.Id,
+                DistrictId = a.DistrictId,
+                Name = a.Name
+            });
+            return JsonConvert.SerializeObject(lines);
         }
     }
 }

@@ -23,6 +23,7 @@
                         <td>
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="tbUserName" Text="* Username không được bỏ trống" Display="Dynamic" ForeColor="Red">
                             </asp:RequiredFieldValidator>
+                            <%--ValidationExpression="^[a-zA-Z]+\s[0-9]+$"--%>
                         </td>
                     </tr>
                     <tr>

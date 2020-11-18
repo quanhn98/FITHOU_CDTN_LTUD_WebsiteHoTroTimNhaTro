@@ -41,11 +41,24 @@
                     </tr>
                     <tr>
                         <td style="text-align: right">
+                            <h4 class="lbLogin">Họ và tên : </h4>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="tbFullName" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">
                             <h4 class="lbLogin">Số điện thoại : </h4>
                         </td>
                         <td>
                             <asp:TextBox ID="tbPhoneNumber" runat="server" TextMode="Number" MaxLength="10"></asp:TextBox>
                         </td>
+                        <%--<td>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="tbPassword" Text="* Số điện thoại không hợp lệ" Display="Dynamic" ForeColor="Red" 
+                                ValidationExpression="^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$">
+                            </asp:RequiredFieldValidator>
+                        </td>--%>
                     </tr>
                 </table>
             </div>

@@ -17,7 +17,7 @@ namespace WebForm.SqlServer
         public virtual DbSet<District> District { get; set; }
         public virtual DbSet<Line> Line { get; set; }
         public virtual DbSet<Post> Post { get; set; }
-        public virtual DbSet<Province> Province { get; set; }
+        //public virtual DbSet<Province> Province { get; set; }
         public virtual DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

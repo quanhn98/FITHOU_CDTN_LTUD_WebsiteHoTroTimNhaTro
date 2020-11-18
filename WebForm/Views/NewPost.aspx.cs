@@ -51,7 +51,17 @@ namespace WebForm.Views.Public
             if (!IsPostBack)
             {
                 CheckUserLogon();
+                RenderFilter();
             }
+        }
+        public void RenderFilter()
+        {
+            var cities = CityManager.GetCities();
+            dlCityId.DataTextField = "Name";
+            dlCityId.DataValueField = "Id";
+            dlCityId.DataSource = cities;
+            dlCityId.DataBind();
+            dlCityId.Items.Insert(0, new ListItem("---Thành phố---", ""));
         }
         protected void btCreate_Click(object sender, EventArgs e)
         {
@@ -76,6 +86,19 @@ namespace WebForm.Views.Public
             if (dlCityId.SelectedValue != null && dlCityId.SelectedValue.Length > 0) post.CityId = int.Parse(dlCityId.SelectedValue);
             if (!string.IsNullOrEmpty(tbCoordinatesX.Text)) post.CoordinatesX = tbCoordinatesX.Text;
             if (!string.IsNullOrEmpty(tbCoordinatesY.Text)) post.CoordinatesY = tbCoordinatesY.Text;
+            if (!string.IsNullOrEmpty(tbPhoneNumber.Text)) post.PhoneNumber = tbPhoneNumber.Text;
+            if (dlCityId.SelectedItem!=null && !string.IsNullOrEmpty(dlCityId.SelectedValue))
+            {
+                post.CityId = int.Parse(dlCityId.SelectedValue);
+            }
+            if (dlDistrictId.SelectedItem != null && !string.IsNullOrEmpty(dlDistrictId.SelectedValue))
+            {
+                post.DistrictId = int.Parse(dlDistrictId.SelectedValue);
+            }
+            if (dlLineId.SelectedItem != null && !string.IsNullOrEmpty(dlLineId.SelectedValue))
+            {
+                post.LineId = int.Parse(dlLineId.SelectedValue);
+            }
             post.ImagePaths = ImagePaths;
             post.VideoPaths = VideoPaths;
             post.UserId = int.Parse(Session["UserId"].ToString());

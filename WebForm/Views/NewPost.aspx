@@ -1,9 +1,15 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NewPost.aspx.cs" Inherits="WebForm.Views.Public.NewPost" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NewPost.aspx.cs" Inherits="WebForm.Views.Public.NewPost" EnableEventValidation="false"%>
 
 <asp:Content ContentPlaceHolderID="Header" runat="server">
     <title>Tạo tin mới</title>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        .price {
+            width: 60%;
+            display: inline;
+        }
+    </style>
     <div style="padding: 10px;">
         <h3 style="text-align: center">Tạo tin</h3>
         <div>
@@ -36,7 +42,8 @@
                         <div style="flex-grow: 1; flex-basis: 0; padding-right: 15px; width: 50%">
                             <h4>Giá</h4>
                             <div>
-                                <asp:TextBox ID="tbPrice" runat="server" CssClass="form-control" TextMode="Number" ToolTip="Đơn vị nghìn đồng"></asp:TextBox>
+                                <asp:TextBox ID="tbPrice" runat="server" CssClass="form-control price" ToolTip=""></asp:TextBox>
+                                Triệu 
                                 <asp:RequiredFieldValidator
                                     ID="RequiredFieldValidator2"
                                     ControlToValidate="tbPrice"
@@ -50,7 +57,16 @@
                         <div style="flex-grow: 1; flex-basis: 0; padding-left: 15px">
                             <h4>Diện tích</h4>
                             <div>
-                                <asp:TextBox ID="tbAcreage" runat="server" CssClass="form-control" TextMode="Number" ToolTip="Đơn vị m2"></asp:TextBox>
+                                <asp:TextBox ID="tbAcreage" runat="server" CssClass="form-control price" TextMode="Number" ToolTip="Đơn vị m2"></asp:TextBox>
+                                m2
+                                <asp:RequiredFieldValidator
+                                    ID="RequiredFieldValidator1"
+                                    ControlToValidate="tbAcreage"
+                                    ErrorMessage="Diện tích không được để trống"
+                                    Display="Dynamic"
+                                    runat="server" ForeColor="Red">
+                            * Diện tích không được để trống
+                                </asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
@@ -60,14 +76,16 @@
                         <div style="flex-grow: 1; flex-basis: auto; padding-right: 15px">
                             <h4>Thành phố</h4>
                             <div>
-                                <asp:DropDownList ID="dlCityId" runat="server" CssClass="form-control">
+                                <asp:DropDownList ID="dlCityId" runat="server" CssClass="form-control" ClientIDMode="Static">
+                                                                <asp:ListItem Text="---Thành phố---" Value=""></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
                         <div style="flex-grow: 1; flex-basis: auto; padding-left: 15px">
                             <h4>Quận</h4>
                             <div>
-                                <asp:DropDownList ID="dlDistrictId" runat="server" CssClass="form-control">
+                                <asp:DropDownList ID="dlDistrictId" runat="server" CssClass="form-control" ClientIDMode="Static">
+                                                            <asp:ListItem Text="---Quận huyện---" Value=""></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -75,7 +93,8 @@
                     <div>
                         <h4>Đường/Phố</h4>
                         <div>
-                            <asp:DropDownList ID="dlLineId" runat="server" CssClass="form-control">
+                            <asp:DropDownList ID="dlLineId" runat="server" CssClass="form-control" ClientIDMode="Static">
+                                                        <asp:ListItem Text="---Đường phố---" Value=""></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -125,11 +144,17 @@
                             <label for="dexe">Khép kín </label>
                         </div>
                     </div>
+                    <div>
+                        <h4>Số điện thoại</h4>
+                        <div>
+                            <asp:TextBox ID="tbPhoneNumber" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div style="display: flex">
                 <div style="flex-grow: 1; flex-basis: auto; padding: 10px; width: 50%">
-                    <h4>Media</h4>
+                    <h4>Ảnh</h4>
                     <div>
                         <asp:FileUpload ID="upMedia" runat="server" AllowMultiple="true" ClientIDMode="Static" />
                         <div id="previewMedia" class="post-Item"></div>
@@ -138,13 +163,13 @@
                 <div style="flex-grow: 1; flex-basis: auto; padding: 10px; width: 50%">
                     <h4>Định vị</h4>
                     <div>
-                        <div id="map" style="height:400px">
+                        <div id="map" style="height: 400px">
                         </div>
                     </div>
                 </div>
             </div>
-            <asp:TextBox ID="tbCoordinatesX" runat="server" ClientIDMode="Static" CssClass="hidden"/>
-            <asp:TextBox ID="tbCoordinatesY" runat="server" ClientIDMode="Static" CssClass="hidden"/>
+            <asp:TextBox ID="tbCoordinatesX" runat="server" ClientIDMode="Static" CssClass="hidden" />
+            <asp:TextBox ID="tbCoordinatesY" runat="server" ClientIDMode="Static" CssClass="hidden" />
         </div>
     </div>
 
@@ -178,6 +203,9 @@
         var map = document.getElementById("map");
         var tbCoordinatesX = document.getElementById("tbCoordinatesX");
         var tbCoordinatesY = document.getElementById("tbCoordinatesY");
+        var dlCityId = document.getElementById("dlCityId");
+        var dlDistrictId = document.getElementById("dlDistrictId");
+        var dlLineId = document.getElementById("dlLineId");
         console.log(btnCollapse);
         var mediaMetadata = [];
         for (var i = 0; i < btnCollapse.length; i++) {
@@ -229,6 +257,54 @@
                 reader.readAsDataURL(item);
             }
         };
+        dlCityId.addEventListener("change", function () {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var m = this.responseText;
+                    console.log(m);
+                    BindDistrictSelect(this.responseText);
+                }
+            };
+            var params = JSON.stringify({ cityId: this.value });
+            xhttp.open("POST", "/Views/TestAjax.aspx/GetDistrict");
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhttp.send(params);
+        });
+        function BindDistrictSelect(data) {
+            dlDistrictId.innerHTML = "";
+            dlLineId.innerHTML = "";
+            dlLineId.appendChild(new Option("---Đường phố---", ""));
+            var dataJson = JSON.parse(data);
+            dataJson = JSON.parse(dataJson.d);
+            dlDistrictId.appendChild(new Option("---Quận huyện---", ""));
+            for (var i = 0; i < dataJson.length; i++) {
+                dlDistrictId.appendChild(new Option(dataJson[i].Name, dataJson[i].Id));
+            }
+        }
+        dlDistrictId.addEventListener("change", function () {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var m = this.responseText;
+                    console.log(m);
+                    BindLineSelect(this.responseText);
+                }
+            };
+            var params = JSON.stringify({ districtId: this.value });
+            xhttp.open("POST", "/Views/TestAjax.aspx/GetLine");
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhttp.send(params);
+        });
+        function BindLineSelect(data) {
+            dlLineId.innerHTML = "";
+            var dataJson = JSON.parse(data);
+            dataJson = JSON.parse(dataJson.d);
+            dlLineId.appendChild(new Option("---Đường phố---", ""));
+            for (var i = 0; i < dataJson.length; i++) {
+                dlLineId.appendChild(new Option(dataJson[i].Name, dataJson[i].Id));
+            }
+        }
         InitMap();
         function InitMap() {
             tbCoordinatesX.value = 21.0278;

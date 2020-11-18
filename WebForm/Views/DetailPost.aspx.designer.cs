@@ -24,6 +24,15 @@ namespace WebForm.Views.Public
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DetailTitle;
 
         /// <summary>
+        /// btnDeleteC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnDeleteC;
+
+        /// <summary>
         /// btnDelete control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace WebForm.Views.Public
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl time;
+
+        /// <summary>
+        /// countView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl countView;
 
         /// <summary>
         /// price control.
@@ -204,6 +222,15 @@ namespace WebForm.Views.Public
         protected global::System.Web.UI.WebControls.TextBox coordinatesY;
 
         /// <summary>
+        /// viewProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor viewProfile;
+
+        /// <summary>
         /// createdUser control.
         /// </summary>
         /// <remarks>
@@ -211,5 +238,23 @@ namespace WebForm.Views.Public
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl createdUser;
+
+        /// <summary>
+        /// totalPost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl totalPost;
+
+        /// <summary>
+        /// phoneNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl phoneNumber;
     }
 }

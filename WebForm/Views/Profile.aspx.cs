@@ -38,13 +38,67 @@ namespace WebForm.Views.Public
             if (!IsPostBack)
             {
                 CheckUserLogon();
+                var sessionUserName = Session["UserName"];
+                var sessionUserId = Session["UserId"];
+                var userId = Request.QueryString["Id"];
+                if (userId != null)
+                {
+                    var user = UserManager.GetUsers().Any(a => a.Id == int.Parse(userId.ToString()));
+                    if (user)
+                    {
+                        RenderInfo(int.Parse(userId.ToString()));
+                    }
+                    else
+                    {
+                        Response.Redirect("Error");
+                    }
+                }else if (sessionUserId!=null)
+                {
+                    RenderInfo(int.Parse(sessionUserId.ToString()));
+                }
+                else
+                {
+                    Response.Redirect("Error");
+                }
             }
         }
 
-        public void GetMyPosts()
+        public void RenderInfo(int id)
         {
-            var userId = (int)Session["UserId"];
-            var myPosts = PostManager.GetPostsByUserId(userId);
+            var user = UserManager.GetUsers().FirstOrDefault(a => a.Id == id);
+            if (user == null)
+            {
+                Response.Redirect("Error");
+            }
+            if(user.Id != int.Parse(Session["UserId"].ToString()))
+            {
+                settingContainer.Visible = false;
+            }
+            else
+            {
+                settingContainer.Visible = true;
+                updateProfile.HRef = "UpdateProfile.aspx?id=" + user.Id;
+                changePass.HRef = "ChangePassword.aspx?id=" + user.Id;
+            }
+            fullName.InnerText = user.FullName;
+            userName.InnerText = user.UserName;
+            totalPost.InnerText = user.TotalPost.ToString();
+            regDate.InnerText = user.RegistrationDate.Value.ToString("hh:mm dd/MM/yyyy");
+            phoneNumber.InnerText = user.PhoneNumber;
+            RenderListPost(id);
+            RenderListPostClosed(id);
+        }
+        public void RenderListPost(int id)
+        {
+            var posts = PostManager.GetPostsByUserId(id).Where(a => !a.Closed);
+            Repeater1.DataSource = posts;
+            Repeater1.DataBind();
+        }
+        public void RenderListPostClosed(int id)
+        {
+            var posts = PostManager.GetPostsByUserId(id).Where(a => a.Closed);
+            Repeater2.DataSource = posts;
+            Repeater2.DataBind();
         }
     }
 }

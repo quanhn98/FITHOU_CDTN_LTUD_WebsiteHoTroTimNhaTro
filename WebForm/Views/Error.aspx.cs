@@ -11,7 +11,14 @@ namespace WebForm.Views.Public
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                var message = Request.QueryString["message"];
+                if(message!=null && !string.IsNullOrEmpty(message))
+                {
+                    mesageShow.InnerText = message;
+                }
+            }
         }
     }
 }

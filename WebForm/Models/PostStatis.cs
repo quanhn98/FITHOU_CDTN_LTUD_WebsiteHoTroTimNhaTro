@@ -1,18 +1,21 @@
-namespace WebForm.SqlServer
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+using WebForm.SqlServer;
+
+namespace WebForm.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-    using WebForm.Models;
-
-    [Table("Post")]
-    public class Post
+    public class PostStatis
     {
-        public Post()
+        public PostStatis(Post post)
         {
-
+            Id = post.Id;
+            Title = post.Title;
+            CountView = post.CountView;
+            PostedDate = post.PostedDate;
+            UserId = post.UserId;
         }
         public int Id { get; set; }
 
@@ -57,20 +60,8 @@ namespace WebForm.SqlServer
         public int? CountView { get; set; }
         public string CoordinatesX { get; set; }
         public string CoordinatesY { get; set; }
-        public DateTime? PostedDate { get; set; } 
+        public DateTime? PostedDate { get; set; }
         public string PhoneNumber { get; set; }
-
-        public virtual City City { get; set; }
-
-        public virtual District District { get; set; }
-
-        public virtual Line Line { get; set; }
-
-        //public virtual Province Province { get; set; }
-
-        public virtual User User { get; set; }
-
-        [NotMapped]
-        public string Thumbnail { get; set; } = "/Content/Images/no-image.jpg";
+        public string UserName { get; set; }
     }
 }
