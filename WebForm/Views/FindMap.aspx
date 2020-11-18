@@ -189,7 +189,7 @@
                     <asp:ScriptManager ID="MainScriptManager" runat="server" />
                     <asp:UpdatePanel ID="pnlHelloWorld" runat="server">
                         <ContentTemplate>
-                            <div>
+                            <div style="max-height:600px;overflow:auto">
                                 <asp:Repeater ID="rptResult" runat="server">
                                     <ItemTemplate>
                                         <div id="<%# Eval("Id") %>" data-CoordinatesX="<%# Eval("CoordinatesX") %>" data-CoordinatesY="<%# Eval("CoordinatesY") %>"  tabindex="-1" class="post" style="background-color: #fbf7ef; display: flex; height: 170px; overflow: hidden; padding: 10px; margin-bottom: 3px;">

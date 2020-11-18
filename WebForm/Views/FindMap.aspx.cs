@@ -18,7 +18,7 @@ namespace WebForm.Views
         CityManager CityManager = new CityManager();
         readonly PagedDataSource _pgsource = new PagedDataSource();
         int _firstIndex, _lastIndex;
-        private int _pageSize = 2;
+        private int _pageSize = 10;
         protected void Page_Load(object sender, EventArgs e)
         {
             BindDataIntoRepeater();
