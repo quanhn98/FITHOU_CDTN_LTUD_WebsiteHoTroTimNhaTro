@@ -4,6 +4,13 @@
     <title>Quản trị</title>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        table td, table th {
+            padding: .75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
     <div>
         <div style="background-color: #ecf0f1; color: #055699; border-bottom: none; font-weight: 600; border-left: 3px solid #055699; padding: 10px">
             Danh sách user
@@ -11,8 +18,9 @@
         <asp:ListView ID="lvUser" runat="server" GroupPlaceholderID="groupPlaceHolder1"
             ItemPlaceholderID="itemPlaceHolder1" OnPagePropertiesChanging="lvUser_PagePropertiesChanging">
             <LayoutTemplate>
-                <table cellpadding="0" cellspacing="0" style="width:100%">
-                    <tr>
+                <table style="width:100%">
+                    <thead>
+                        <tr>
                         <th>Mã tài khoản
                         </th>
                         <th>Tên tài khoản
@@ -26,6 +34,7 @@
                          <th>Tin đã đóng
                         </th>
                     </tr>
+                    </thead>
                     <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
                     <tr>
                         <td colspan="3">
